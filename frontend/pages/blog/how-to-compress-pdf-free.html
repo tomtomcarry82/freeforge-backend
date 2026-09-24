@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Compress a PDF for Free (Without Making It Look Terrible)</title>
+<meta name="description" content="Your PDF is 50MB and the upload limit is 10. Here's how to shrink a PDF for free — with built-in OS tricks and free online tools — and how to keep it looking good.">
+<style>
+:root{--bg:#0a0e1a;--card:#141b33;--line:#26315c;--acc:#7c5cff;--acc2:#00d4ff;--txt:#f0f2ff;--mut:#9aa3c7;--green:#3ddc84}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+.topnav{position:sticky;top:0;background:rgba(10,14,26,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:50}
+.topnav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-size:1.25rem;font-weight:800;text-decoration:none;color:var(--txt)}
+.navlinks a{color:var(--mut);text-decoration:none;font-size:.92rem;padding:8px 12px}
+.navlinks a:hover{color:var(--txt)}
+article{padding:36px 0 60px}article h1{font-size:1.9rem;line-height:1.3;margin:0 0 8px}
+article h2{margin-top:30px;font-size:1.3rem}article p,article li{color:var(--mut)}
+article b,article strong{color:var(--txt)}article a{color:var(--acc2)}
+.meta{font-size:.85rem;color:var(--mut);margin-bottom:24px}
+.tip{background:rgba(61,220,132,.07);border:1px solid rgba(61,220,132,.3);border-radius:12px;padding:14px 16px;margin:18px 0}
+.warn{background:rgba(255,176,32,.07);border:1px solid rgba(255,176,32,.3);border-radius:12px;padding:14px 16px;margin:18px 0}
+footer{border-top:1px solid var(--line);padding:24px 18px 44px;text-align:center;color:var(--mut);font-size:.85rem}
+footer nav{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+footer nav a{color:var(--mut);text-decoration:none}
+</style>
+<link rel="canonical" href="https://freeforge.onrender.com/blog/how-to-compress-pdf-free">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FreeForge">
+<meta property="og:title" content="How to Compress a PDF for Free (Without Making It Look Terrible)">
+<meta property="og:description" content="Your PDF is 50MB and the upload limit is 10. Here&#x27;s how to shrink a PDF for free — with built-in OS tricks and free online tools — and how to keep it looking good.">
+<meta property="og:url" content="https://freeforge.onrender.com/blog/how-to-compress-pdf-free">
+<meta property="og:image" content="https://freeforge.onrender.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Compress a PDF for Free (Without Making It Look Terrible)">
+<meta name="twitter:description" content="Your PDF is 50MB and the upload limit is 10. Here&#x27;s how to shrink a PDF for free — with built-in OS tricks and free online tools — and how to keep it looking good.">
+<meta name="twitter:image" content="https://freeforge.onrender.com/og-image.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "How to Compress a PDF for Free (Without Making It Look Terrible)", "description": "Your PDF is 50MB and the upload limit is 10. Here's how to shrink a PDF for free — with built-in OS tricks and free online tools — and how to keep it looking good.", "url": "https://freeforge.onrender.com/blog/how-to-compress-pdf-free", "author": {"@type": "Organization", "name": "FreeForge"}, "publisher": {"@type": "Organization", "name": "FreeForge"}, "datePublished": "2026-09-24", "image": "https://freeforge.onrender.com/og-image.png"}
+</script>
+</head>
+<body>
+<nav class="topnav"><div class="wrap">
+<a class="logo" href="/">⚒️ FreeForge</a>
+<div class="navlinks"><a href="/#studio">Studio</a><a href="/pages/blog/">Blog</a><a href="/pages/about.html">About</a></div>
+</div></nav>
+<div class="wrap"><article>
+<h1>How to Compress a PDF for Free (Without Making It Look Terrible)</h1>
+<p class="meta">By the FreeForge team · September 2026 · 6 min read</p>
+
+<p>You scanned a document, exported a report, or saved a slide deck — and now the PDF is 47MB while the upload limit is 10. Email bounces it, the job portal rejects it, and your phone storage groans. The fix is compression, and the good news is you don't need to pay for it. But not all compression is equal: shrink too aggressively and your crisp document turns into a blurry mess. Here's how to do it right.</p>
+
+<h2>First: why is your PDF so big?</h2>
+<p>A PDF is basically a container, and the usual suspects behind a bloated file are:</p>
+<ul>
+<li><b>Full-resolution images.</b> A phone scan at 400 DPI or a slide deck full of 4K screenshots is the #1 cause. Images often make up 90%+ of a PDF's size.</li>
+<li><b>Embedded fonts.</b> PDFs embed font files so the document looks the same everywhere. That's good for fidelity, but each embedded font family adds weight.</li>
+<li><b>Scanned pages.</b> Every scanned page is a full-page photograph. Ten scanned pages at high resolution easily hit 30–50MB.</li>
+<li><b>Duplicate content.</b> Some exporters embed the same logo or background image separately on every page instead of reusing it.</li>
+</ul>
+<p>Knowing the cause tells you which fix works. If it's images, compression will work beautifully. If it's mostly text, the file probably wasn't big to begin with.</p>
+
+<h2>Method 1: built-in tools (free, no upload)</h2>
+<p><b>On a Mac</b>, open the PDF in Preview, go to File → Export, and pick a Quartz Filter like "Reduce File Size". It's one click and surprisingly effective — 50MB scans often drop to 5MB. The catch: Apple's filter can be <em>too</em> aggressive and make text fuzzy. For an important document, test it and zoom to 200% before sending.</p>
+<p><b>On Windows</b>, there's no built-in compressor, but you can "print" the PDF to PDF with lower quality: open it in your browser (Chrome/Edge), press Ctrl+P, choose "Save as PDF", and look for quality options. It works in a pinch, though it's clumsy compared to a dedicated tool.</p>
+<div class="tip"><b>Privacy note:</b> if your PDF contains anything sensitive — medical records, contracts, IDs — prefer a method that keeps the file on your device (built-in tools or a self-hosted compressor) rather than uploading it to a random website.</div>
+
+<h2>Method 2: free online PDF compressors</h2>
+<p>This is the easiest route for most people: drag, drop, download. A good compressor lets you pick a quality level — typically something like <b>low / medium / high</b> compression. Here's how to choose:</p>
+<ul>
+<li><b>High quality (light compression):</b> use this for resumes, portfolios, anything you'll print. Expect a 2–4x size reduction.</li>
+<li><b>Medium:</b> the sweet spot for email and uploads — readable text, decent images, 5–10x smaller.</li>
+<li><b>Low quality (strong compression):</b> only for screen-only viewing where size matters more than looks. Text can get noticeably soft.</li>
+</ul>
+<p>FreeForge's own <a href="/#t-pdf">PDF compressor</a> does this in your browser with no signup — your file never leaves your device, which neatly solves the privacy problem above.</p>
+
+<h2>Method 3: fix the source, not the PDF</h2>
+<p>Sometimes the smartest compression happens before the PDF exists:</p>
+<ul>
+<li>Export slides at "screen" quality instead of "print" if they're only going to be viewed digitally.</li>
+<li>When scanning, 200 DPI is plenty for documents. 400+ DPI doubles the size for zero visible benefit on screen.</li>
+<li>Convert color scans to grayscale for text documents — a massive size drop with no readability loss.</li>
+<li>Delete blank or duplicate pages. Sounds obvious; people forget.</li>
+</ul>
+
+<h2>What compression actually does (the 30-second version)</h2>
+<p>PDF compression mostly works by <b>downsampling images</b> (fewer pixels per inch) and <b>re-encoding them</b> (JPEG-style lossy compression instead of lossless). Text is almost never the problem, so it stays vector-sharp. Fonts get subsetted — only the characters actually used are kept. Understanding this explains the golden rule:</p>
+<div class="warn"><b>Never compress the same PDF twice.</b> Each round of lossy image compression throws away more detail. Always compress from the original, and keep the original around until you're sure the compressed version is good enough.</div>
+
+<h2>A quick workflow that works every time</h2>
+<ol>
+<li>Check what's making it big (zoom in — if the images look insanely sharp, they're the culprit).</li>
+<li>Try medium compression first. Check the result at 100–150% zoom.</li>
+<li>Text still crisp? Done. Images too soft? Go one level lighter.</li>
+<li>Still too big? Remove unnecessary pages or re-export the source at lower image quality, then compress once.</li>
+</ol>
+<p>That's it. No subscriptions, no watermarks, no sketchy "free trial" that demands your credit card. A PDF that's 10x smaller and still looks professional is a five-minute job once you know which slider to pull.</p>
+</article></div>
+<footer>
+<nav><a href="/pages/blog/">Blog</a><a href="/pages/about.html">About</a><a href="/pages/privacy.html">Privacy</a><a href="/pages/contact.html">Contact</a></nav>
+<b>FreeForge</b> — Free AI Studio. 100% free, no signup.
+</footer>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>
