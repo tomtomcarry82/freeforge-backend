@@ -1,0 +1,91 @@
+<!-- CONTACT-EMAIL: change tomtomcarry82@gmail.com to the real support inbox at deploy -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — FreeForge</title>
+<meta name="description" content="Contact the FreeForge team: feedback, bug reports, takedown requests and business inquiries.">
+<link rel="canonical" href="https://freeforge.onrender.com/contact">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FreeForge">
+<meta property="og:title" content="Contact — FreeForge">
+<meta property="og:description" content="Feedback, bug reports, takedown requests and business inquiries — we read every message.">
+<meta property="og:url" content="https://freeforge.onrender.com/contact">
+<meta property="og:image" content="https://freeforge.onrender.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact — FreeForge">
+<meta name="twitter:description" content="Feedback, bug reports and business inquiries — we read every message.">
+<meta name="twitter:image" content="https://freeforge.onrender.com/og-image.png">
+<style>
+:root{--bg:#0a0e1a;--card:#141b33;--line:#26315c;--acc:#7c5cff;--acc2:#00d4ff;--txt:#f0f2ff;--mut:#9aa3c7}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.65}
+.wrap{max-width:800px;margin:0 auto;padding:0 18px}
+.topnav{position:sticky;top:0;background:rgba(10,14,26,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topnav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-size:1.3rem;font-weight:800;text-decoration:none;color:var(--txt)}
+.logo .forge{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.navlinks a{color:var(--mut);text-decoration:none;font-size:.92rem;padding:8px 12px}
+.navlinks a:hover{color:var(--txt)}
+article{padding:36px 0 60px}article h1{font-size:2rem}
+article p,article li{color:var(--mut)}article b{color:var(--txt)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0}
+label{display:block;font-weight:700;margin:14px 0 6px}
+input,textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--txt);padding:12px;font-size:1rem;font-family:inherit}
+textarea{min-height:140px;resize:vertical}
+.btn{display:inline-block;border:0;border-radius:12px;padding:13px 28px;font-size:1rem;font-weight:800;cursor:pointer;background:linear-gradient(90deg,var(--acc),#5a3ee0);color:#fff;margin-top:16px;min-height:48px}
+footer{border-top:1px solid var(--line);padding:24px 18px 44px;text-align:center;color:var(--mut);font-size:.85rem}
+footer nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+footer nav a{color:var(--mut);text-decoration:none}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Contact — FreeForge","url":"https://freeforge.onrender.com/contact","description":"Contact the FreeForge team: feedback, bug reports, takedown requests and business inquiries."}
+</script>
+</head>
+<body>
+<nav class="topnav"><div class="wrap">
+<a class="logo" href="/">⚒️ Free<span class="forge">Forge</span></a>
+<div class="navlinks"><a href="/#studio">Studio</a><a href="/blog">Blog</a><a href="/about">About</a></div>
+</div></nav>
+<div class="wrap"><article>
+<h1>Contact</h1>
+<p>We read every message. Whether it's a bug, a feature idea, or a takedown request — reach out.</p>
+<div class="card">
+<form id="cf" onsubmit="return sendMail(event)">
+<label for="cname">Your name</label>
+<input id="cname" name="name" type="text" required autocomplete="name" placeholder="Jane Doe">
+<label for="cemail">Your email</label>
+<input id="cemail" name="email" type="email" required autocomplete="email" placeholder="jane@example.com">
+<label for="cmsg">Message</label>
+<textarea id="cmsg" name="message" required placeholder="What's on your mind?"></textarea>
+<button class="btn" type="submit">Send message</button>
+</form>
+<p style="font-size:.85rem">Submitting opens your email app with the message prefilled — nothing is stored on our servers.</p>
+</div>
+<h2 style="font-size:1.25rem">Before you write</h2>
+<ul>
+<li><b>Bug?</b> Tell us which tool (image / voice / story video), what you typed or clicked, and what happened. A screenshot helps.</li>
+<li><b>Content concern / takedown?</b> Send the exact prompt or a link to the generated file and describe the issue — we review reports promptly.</li>
+<li><b>Business / press?</b> Include "Partnership" in the subject line.</li>
+</ul>
+<p>We aim to reply within a few business days.</p>
+</article></div>
+<footer>
+<nav><a href="/blog">Blog</a><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/contact">Contact</a></nav>
+<b>FreeForge</b> — Free AI Studio. 100% free, no signup.
+</footer>
+<script>
+function sendMail(e){
+  e.preventDefault();
+  var n=document.getElementById('cname').value.trim();
+  var em=document.getElementById('cemail').value.trim();
+  var m=document.getElementById('cmsg').value.trim();
+  var subject=encodeURIComponent('FreeForge contact — '+n);
+  var body=encodeURIComponent('Name: '+n+'\nEmail: '+em+'\n\n'+m);
+  window.location.href='mailto:tomtomcarry82@gmail.com?subject='+subject+'&body='+body;
+  return false;
+}
+</script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>
