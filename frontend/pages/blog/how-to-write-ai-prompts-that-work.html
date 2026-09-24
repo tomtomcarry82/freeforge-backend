@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Write AI Prompts That Actually Work — FreeForge Blog</title>
+<meta name="description" content="The simple formula behind great AI images and stories: subject + style + detail + mood, with real before/after examples.">
+<meta property="og:title" content="How to Write AI Prompts That Actually Work">
+<meta name="twitter:card" content="summary">
+<style>
+:root{--bg:#0a0e1a;--card:#141b33;--line:#26315c;--acc:#7c5cff;--acc2:#00d4ff;--txt:#f0f2ff;--mut:#9aa3c7}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+.topnav{position:sticky;top:0;background:rgba(10,14,26,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topnav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-size:1.3rem;font-weight:800;text-decoration:none;color:var(--txt)}
+.logo .forge{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.navlinks a{color:var(--mut);text-decoration:none;font-size:.92rem;padding:8px 12px}.navlinks a:hover{color:var(--txt)}
+article{padding:36px 0 60px}article h1{font-size:1.9rem;line-height:1.3}article h2{margin-top:30px;font-size:1.3rem}
+article p,article li{color:var(--mut)}article b{color:var(--txt)}
+.bad{background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.3);border-radius:10px;padding:12px 16px;margin:10px 0;color:var(--mut)}
+.good{background:rgba(61,220,132,.08);border:1px solid rgba(61,220,132,.3);border-radius:10px;padding:12px 16px;margin:10px 0;color:var(--mut)}
+.meta{color:var(--mut);font-size:.85rem;margin-bottom:20px}
+.cta{display:block;text-align:center;background:linear-gradient(90deg,var(--acc),#5a3ee0);color:#fff;font-weight:800;text-decoration:none;border-radius:14px;padding:14px;margin:28px 0}
+footer{border-top:1px solid var(--line);padding:24px 18px 44px;text-align:center;color:var(--mut);font-size:.85rem}
+footer nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+footer nav a{color:var(--mut);text-decoration:none}
+</style>
+<link rel="canonical" href="https://example.com/blog/how-to-write-ai-prompts-that-work">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FreeForge">
+<meta property="og:description" content="The simple formula behind great AI images and stories: subject + style + detail + mood, with real before/after examples.">
+<meta property="og:url" content="https://example.com/blog/how-to-write-ai-prompts-that-work">
+<meta property="og:image" content="https://example.com/og-image.png">
+<meta name="twitter:title" content="How to Write AI Prompts That Actually Work — FreeForge Blog">
+<meta name="twitter:description" content="The simple formula behind great AI images and stories: subject + style + detail + mood, with real before/after examples.">
+<meta name="twitter:image" content="https://example.com/og-image.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "How to Write AI Prompts That Actually Work — FreeForge Blog", "description": "The simple formula behind great AI images and stories: subject + style + detail + mood, with real before/after examples.", "url": "https://example.com/blog/how-to-write-ai-prompts-that-work", "author": {"@type": "Organization", "name": "FreeForge"}, "publisher": {"@type": "Organization", "name": "FreeForge"}, "datePublished": "2026-09-24", "image": "https://example.com/og-image.png"}
+</script>
+</head>
+<body>
+<nav class="topnav"><div class="wrap">
+<a class="logo" href="/">⚒️ Free<span class="forge">Forge</span></a>
+<div class="navlinks"><a href="/#studio">Studio</a><a href="/blog">Blog</a><a href="/about">About</a></div>
+</div></nav>
+<div class="wrap"><article>
+<h1>How to Write AI Prompts That Actually Work</h1>
+<div class="meta">Prompting guide · 5 min read</div>
+<p>Prompting is a skill, not a talent. The difference between a blurry mess and a stunning image is rarely the tool — it's the words. Here's the system.</p>
+<h2>The core formula</h2>
+<p>Every strong prompt has four ingredients: <b>subject + detail + style + mood</b>.</p>
+<div class="bad">❌ <i>"a castle"</i> — the AI guesses everything. You get a generic castle.</div>
+<div class="good">✅ <i>"a medieval stone castle on a cliff at sunset, banners flying, dramatic clouds, cinematic lighting, epic fantasy style"</i> — every word removes a guess.</div>
+<h2>Ingredient 1: Be specific about the subject</h2>
+<p>Not <i>"a woman"</i> but <i>"an elderly fisherwoman with weathered hands mending a net"</i>. Adjectives are free and each one steers the result. If an element matters, name it; if it doesn't, leave it out — the AI fills blanks randomly.</p>
+<h2>Ingredient 2: Name the style</h2>
+<p>Style words are the highest-leverage words in any prompt. Try: <i>photorealistic, cinematic, anime, oil painting, watercolor, 3D render, cyberpunk, vintage photograph, minimalist line art</i>. One word, totally different image.</p>
+<h2>Ingredient 3: Light and mood</h2>
+<p><i>"Golden hour"</i>, <i>"moody fog"</i>, <i>"neon glow"</i>, <i>"soft morning light"</i> — lighting decides whether an image feels professional or flat. When a result looks "off" but you can't say why, it's usually the lighting words missing.</p>
+<h2>Ingredient 4: Composition hints</h2>
+<p><i>"Close-up portrait"</i>, <i>"wide landscape"</i>, <i>"aerial view"</i>, <i>"centered, symmetrical"</i>. This matters most for thumbnails and covers where layout counts.</p>
+<h2>For stories: prompt the arc, not just scenes</h2>
+<p>When using an AI story writer, give it an <b>emotion and an ending</b>: <i>"a heartwarming story about a stray dog, ends with a family adopting him."</i> A topic without an ending produces wandering scenes; a topic with an ending produces a story.</p>
+<h2>The iteration loop</h2>
+<ol>
+<li>Generate with your best first prompt.</li>
+<li>Identify the <b>one</b> thing you dislike.</li>
+<li>Change only that — one word, one ingredient.</li>
+<li>Repeat. Save winners in a notes file; your personal prompt library compounds.</li>
+</ol>
+<p>Do this for a week and you'll outperform 90% of casual users — on any AI tool, free or paid.</p>
+<a class="cta" href="/#studio">Practice on FreeForge — Free →</a>
+</article></div>
+<footer>
+<nav><a href="/blog">Blog</a><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/contact">Contact</a></nav>
+<b>FreeForge</b> — Free AI Studio. 100% free, no signup.
+</footer>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>
