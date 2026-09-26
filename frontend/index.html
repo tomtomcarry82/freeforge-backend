@@ -24,7 +24,7 @@
 </script>
 <style>
   :root{
-    --bg:#0a0e1a; --bg2:#0f1426; --card:#141b33; --card2:#1a2342;
+    --bg:#060a15; --bg2:#0b1122; --card:#101731; --card2:#151f42;
     --line:#26315c; --acc:#7c5cff; --acc2:#00d4ff; --txt:#f0f2ff; --mut:#9aa3c7;
     --green:#3ddc84; --radius:18px;
   }
@@ -145,6 +145,42 @@
   footer nav a{color:var(--mut);text-decoration:none}
   footer nav a:hover{color:var(--txt)}
   @media(max-width:560px){.hero{padding:44px 16px 20px}.tab{padding:18px}.row{flex-direction:column}}
+
+  /* per-tool SEO copy blocks */
+  .seo-copy{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:.97rem}
+  .seo-copy h3{font-size:1.12rem;margin:24px 0 10px;color:var(--txt)}
+  .seo-copy p{color:var(--mut);margin:0 0 12px}
+  .seo-copy ul.facts{list-style:none;padding:0;margin:4px 0 16px;display:grid;gap:8px}
+  .seo-copy ul.facts li{background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:10px 14px;color:var(--txt);font-size:.93rem}
+  .seo-copy ul.facts li b{color:var(--green)}
+  .seo-copy details.seo-faq{background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:12px 16px;margin:0 0 8px}
+  .seo-copy details.seo-faq summary{cursor:pointer;font-weight:700;color:var(--txt)}
+  .seo-copy details.seo-faq p{margin:10px 0 0}
+  .seo-copy .see-also{margin-top:18px;font-size:.94rem}
+  .seo-copy .see-also a{margin-right:14px;white-space:nowrap}
+  @media(min-width:760px){.seo-copy ul.facts{grid-template-columns:repeat(3,1fr)}}
+
+  /* ---- v2 polish: premium dark glow + i18n UI ---- */
+  .ff-clock{font-size:.82rem;color:var(--mut);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .ff-langsel{background:var(--card);border:1px solid var(--line);color:var(--txt);border-radius:10px;
+    padding:6px 8px;font-size:.82rem;max-width:132px;cursor:pointer}
+  .tcard{position:relative;overflow:hidden}
+  .tcard::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;
+    background:radial-gradient(420px 160px at 50% -20%,rgba(124,92,255,.20),transparent 70%)}
+  .tcard:hover::before{opacity:1}
+  .tcard:hover{box-shadow:0 14px 34px -14px rgba(124,92,255,.5)}
+  .btn,.go{transition:transform .15s,box-shadow .2s,filter .2s}
+  .btn:hover,.go:hover{transform:translateY(-1px);box-shadow:0 10px 26px -10px rgba(124,92,255,.65);filter:brightness(1.07)}
+  .tabs{overflow-x:auto;scrollbar-width:thin}
+  .tabs button{white-space:nowrap;flex:0 0 auto}
+  :focus-visible{outline:2px solid var(--acc2);outline-offset:2px}
+  @media(max-width:680px){
+    .navlinks a:not(.cta){display:none}
+    .ff-clock{display:none}
+    .ff-langsel{max-width:104px}
+  }
 </style>
 <link rel="canonical" href="https://freeforge.onrender.com/">
 <meta property="og:url" content="https://freeforge.onrender.com/">
@@ -157,146 +193,148 @@
   <div class="wrap">
     <a class="logo" href="/">⚒️ Free<span class="forge">Forge</span></a>
     <div class="navlinks">
-      <a href="/#studio">Studio</a>
-      <a href="/blog">Blog</a>
-      <a href="/about">About</a>
-      <a href="/#studio" class="cta">Start Creating — Free</a>
+      <a href="/#studio" data-i18n="nav_studio">Studio</a>
+      <a href="/blog" data-i18n="nav_blog">Blog</a>
+      <a href="/about" data-i18n="nav_about">About</a>
+      <a href="/#studio" class="cta" data-i18n="nav_cta">Start Creating — Free</a>
+      <span class="ff-clock" id="ff-clock" title=""></span>
+      <select class="ff-langsel" id="ff-lang" aria-label="Language"></select>
     </div>
   </div>
 </nav>
 
 <header class="hero">
-  <h1>Free AI Studio <span class="grad">&amp; Free Online Tools</span></h1>
-  <p class="sub">Create AI images, chat with AI, voices, story videos &amp; more — plus free everyday tools: compress/merge/split PDFs, compress images, age/BMI/EMI calculators, unit converter, word counter, a fun creator quiz, password generator, anagram solver, QR codes &amp; what's my IP. 21 free tools — no signup. Pick a tool and go — straight from your browser.</p>
+  <h1><span data-i18n="hero_t1">Free AI Studio</span> <span class="grad" data-i18n="hero_t2">&amp; Free Online Tools</span></h1>
+  <p class="sub" data-i18n="hero_sub">Create AI images, chat with AI, voices, story videos &amp; more — plus free everyday tools: compress/merge/split PDFs, compress images, age/BMI/EMI calculators, unit converter, word counter, a fun creator quiz, password generator, anagram solver, QR codes &amp; what's my IP. 21 free tools — no signup. Pick a tool and go — straight from your browser.</p>
   <div class="badges">
-    <span class="badge">✓ 100% FREE</span>
-    <span class="badge">✓ NO SIGNUP</span>
-    <span class="badge">✓ NO API KEYS</span>
+    <span class="badge" data-i18n="badge1">✓ 100% FREE</span>
+    <span class="badge" data-i18n="badge2">✓ NO SIGNUP</span>
+    <span class="badge" data-i18n="badge3">✓ NO API KEYS</span>
   </div>
   <div class="hero-cta">
-    <a class="btn" href="#studio">Start Creating — It's Free</a>
-    <a class="btn ghost" href="/blog">Learn How →</a>
+    <a class="btn" href="#studio" data-i18n="hero_cta1">Start Creating — It's Free</a>
+    <a class="btn ghost" href="/blog" data-i18n="hero_cta2">Learn How →</a>
   </div>
 </header>
 
 <div class="wrap">
   <div class="cards">
     <div class="tcard" data-goto="t-image" role="button" tabindex="0" aria-label="Open AI Image generator">
-      <div class="ico">🖼️</div><h3>AI Image Generator</h3>
-      <p>Turn words into art. Photorealistic, anime, 3D — any style, any size, free.</p>
+      <div class="ico">🖼️</div><h3 data-i18n="tname-t-image">AI Image Generator</h3>
+      <p data-i18n="tdesc-t-image">Turn words into art. Photorealistic, anime, 3D — any style, any size, free.</p>
     </div>
     <div class="tcard" data-goto="t-aichat" role="button" tabindex="0" aria-label="Open AI Chat">
-      <div class="ico">🤖</div><h3>AI Chat</h3>
-      <p>Ask anything — instant AI answers for ideas, homework, writing &amp; more. Free, no signup.</p>
+      <div class="ico">🤖</div><h3 data-i18n="tname-t-aichat">AI Chat</h3>
+      <p data-i18n="tdesc-t-aichat">Ask anything — instant AI answers for ideas, homework, writing &amp; more. Free, no signup.</p>
     </div>
     <div class="tcard" data-goto="t-voice" role="button" tabindex="0" aria-label="Open AI Voice generator">
-      <div class="ico">🎙️</div><h3>AI Voice Generator</h3>
-      <p>Lifelike text-to-speech in 8 voices — English, Bengali &amp; Hindi. Download MP3.</p>
+      <div class="ico">🎙️</div><h3 data-i18n="tname-t-voice">AI Voice Generator</h3>
+      <p data-i18n="tdesc-t-voice">Lifelike text-to-speech in 8 voices — English, Bengali &amp; Hindi. Download MP3.</p>
     </div>
     <div class="tcard" data-goto="t-story" role="button" tabindex="0" aria-label="Open Story Video maker">
-      <div class="ico">🎬</div><h3>Story Video Maker</h3>
-      <p>AI writes your story, generates scenes, narrates &amp; assembles a captioned video. Ready for Shorts &amp; Reels.</p>
+      <div class="ico">🎬</div><h3 data-i18n="tname-t-story">Story Video Maker</h3>
+      <p data-i18n="tdesc-t-story">AI writes your story, generates scenes, narrates &amp; assembles a captioned video. Ready for Shorts &amp; Reels.</p>
     </div>
     <div class="tcard" data-goto="t-rembg" role="button" tabindex="0" aria-label="Open Background Remover">
-      <div class="ico">✂️</div><h3>Background Remover</h3>
-      <p>Upload any photo — get a clean cutout with a transparent background, free.</p>
+      <div class="ico">✂️</div><h3 data-i18n="tname-t-rembg">Background Remover</h3>
+      <p data-i18n="tdesc-t-rembg">Upload any photo — get a clean cutout with a transparent background, free.</p>
     </div>
     <div class="tcard" data-goto="t-caption" role="button" tabindex="0" aria-label="Open Caption and Hashtag Generator">
-      <div class="ico">💬</div><h3>Caption &amp; Hashtag Generator</h3>
-      <p>AI-written captions + hashtags for Reels, TikTok &amp; YouTube Shorts. Copy &amp; post.</p>
+      <div class="ico">💬</div><h3 data-i18n="tname-t-caption">Caption &amp; Hashtag Generator</h3>
+      <p data-i18n="tdesc-t-caption">AI-written captions + hashtags for Reels, TikTok &amp; YouTube Shorts. Copy &amp; post.</p>
     </div>
     <div class="tcard" data-goto="t-quote" role="button" tabindex="0" aria-label="Open Quote Maker">
-      <div class="ico">✨</div><h3>Quote / Meme Maker</h3>
-      <p>Turn any line into a beautiful 1080×1080 quote card. Four gradient styles.</p>
+      <div class="ico">✨</div><h3 data-i18n="tname-t-quote">Quote / Meme Maker</h3>
+      <p data-i18n="tdesc-t-quote">Turn any line into a beautiful 1080×1080 quote card. Four gradient styles.</p>
     </div>
     <div class="tcard" data-goto="t-textvideo" role="button" tabindex="0" aria-label="Open Text to Video">
-      <div class="ico">🎥</div><h3>Text to Video</h3>
-      <p>Describe a scene — AI generates the image, we add smooth motion for a 5-second video.</p>
+      <div class="ico">🎥</div><h3 data-i18n="tname-t-textvideo">Text to Video</h3>
+      <p data-i18n="tdesc-t-textvideo">Describe a scene — AI generates the image, we add smooth motion for a 5-second video.</p>
     </div>
     <div class="tcard" data-goto="t-animate" role="button" tabindex="0" aria-label="Open Photo Animator">
-      <div class="ico">🖼️</div><h3>Photo Animator</h3>
-      <p>Upload any photo — turn it into a 5-second video with cinematic zoom &amp; pan.</p>
+      <div class="ico">🖼️</div><h3 data-i18n="tname-t-animate">Photo Animator</h3>
+      <p data-i18n="tdesc-t-animate">Upload any photo — turn it into a 5-second video with cinematic zoom &amp; pan.</p>
     </div>
     <div class="tcard" data-goto="t-age" role="button" tabindex="0" aria-label="Open Age Calculator">
-      <div class="ico">🎂</div><h3>Age Calculator</h3>
-      <p>Your exact age in years, months &amp; days — plus your birth weekday &amp; next birthday countdown.</p>
+      <div class="ico">🎂</div><h3 data-i18n="tname-t-age">Age Calculator</h3>
+      <p data-i18n="tdesc-t-age">Your exact age in years, months &amp; days — plus your birth weekday &amp; next birthday countdown.</p>
     </div>
     <div class="tcard" data-goto="t-bmi" role="button" tabindex="0" aria-label="Open BMI Calculator">
-      <div class="ico">⚖️</div><h3>BMI Calculator</h3>
-      <p>Check your Body Mass Index instantly — category, healthy range &amp; what it means.</p>
+      <div class="ico">⚖️</div><h3 data-i18n="tname-t-bmi">BMI Calculator</h3>
+      <p data-i18n="tdesc-t-bmi">Check your Body Mass Index instantly — category, healthy range &amp; what it means.</p>
     </div>
     <div class="tcard" data-goto="t-emi" role="button" tabindex="0" aria-label="Open EMI Calculator">
-      <div class="ico">🏦</div><h3>EMI Calculator</h3>
-      <p>Monthly loan EMI, total interest &amp; total payable for home, car or personal loans.</p>
+      <div class="ico">🏦</div><h3 data-i18n="tname-t-emi">EMI Calculator</h3>
+      <p data-i18n="tdesc-t-emi">Monthly loan EMI, total interest &amp; total payable for home, car or personal loans.</p>
     </div>
     <div class="tcard" data-goto="t-pdf" role="button" tabindex="0" aria-label="Open PDF Tools">
-      <div class="ico">📄</div><h3>PDF Tools</h3>
-      <p>Compress PDF size, merge PDFs into one, or split pages out — free, private.</p>
+      <div class="ico">📄</div><h3 data-i18n="tname-t-pdf">PDF Tools</h3>
+      <p data-i18n="tdesc-t-pdf">Compress PDF size, merge PDFs into one, or split pages out — free, private.</p>
     </div>
     <div class="tcard" data-goto="t-compress" role="button" tabindex="0" aria-label="Open Image Compressor">
-      <div class="ico">🗜️</div><h3>Image Compressor</h3>
-      <p>Shrink JPG, PNG &amp; WebP photos — resize &amp; compress while keeping quality.</p>
+      <div class="ico">🗜️</div><h3 data-i18n="tname-t-compress">Image Compressor</h3>
+      <p data-i18n="tdesc-t-compress">Shrink JPG, PNG &amp; WebP photos — resize &amp; compress while keeping quality.</p>
     </div>
     <div class="tcard" data-goto="t-unit" role="button" tabindex="0" aria-label="Open Unit Converter">
-      <div class="ico">📏</div><h3>Unit Converter</h3>
-      <p>Length, weight, temperature, area, speed &amp; data — convert anything instantly.</p>
+      <div class="ico">📏</div><h3 data-i18n="tname-t-unit">Unit Converter</h3>
+      <p data-i18n="tdesc-t-unit">Length, weight, temperature, area, speed &amp; data — convert anything instantly.</p>
     </div>
     <div class="tcard" data-goto="t-words" role="button" tabindex="0" aria-label="Open Word Counter">
-      <div class="ico">🔤</div><h3>Word Counter</h3>
-      <p>Words, characters, sentences &amp; reading time for essays, posts &amp; articles.</p>
+      <div class="ico">🔤</div><h3 data-i18n="tname-t-words">Word Counter</h3>
+      <p data-i18n="tdesc-t-words">Words, characters, sentences &amp; reading time for essays, posts &amp; articles.</p>
     </div>
     <div class="tcard" data-goto="t-quiz" role="button" tabindex="0" aria-label="Open Creator Personality Quiz">
-      <div class="ico">🧠</div><h3>Creator Quiz</h3>
-      <p>What type of creator are you? 8 fun questions — get a shareable result card.</p>
+      <div class="ico">🧠</div><h3 data-i18n="tname-t-quiz">Creator Quiz</h3>
+      <p data-i18n="tdesc-t-quiz">What type of creator are you? 8 fun questions — get a shareable result card.</p>
     </div>
     <div class="tcard" data-goto="t-password" role="button" tabindex="0" aria-label="Open Password Generator">
-      <div class="ico">🔐</div><h3>Password Generator</h3>
-      <p>Strong, random passwords in one tap — pick length, symbols &amp; numbers. Copy instantly.</p>
+      <div class="ico">🔐</div><h3 data-i18n="tname-t-password">Password Generator</h3>
+      <p data-i18n="tdesc-t-password">Strong, random passwords in one tap — pick length, symbols &amp; numbers. Copy instantly.</p>
     </div>
     <div class="tcard" data-goto="t-anagram" role="button" tabindex="0" aria-label="Open Anagram Solver">
-      <div class="ico">🔡</div><h3>Anagram Solver</h3>
-      <p>Type letters — find every anagram &amp; word you can make. Great for Scrabble &amp; puzzles.</p>
+      <div class="ico">🔡</div><h3 data-i18n="tname-t-anagram">Anagram Solver</h3>
+      <p data-i18n="tdesc-t-anagram">Type letters — find every anagram &amp; word you can make. Great for Scrabble &amp; puzzles.</p>
     </div>
     <div class="tcard" data-goto="t-qr" role="button" tabindex="0" aria-label="Open QR Code Generator">
-      <div class="ico">⬛</div><h3>QR Code Generator</h3>
-      <p>Turn any link or text into a scannable QR code — download the PNG, free.</p>
+      <div class="ico">⬛</div><h3 data-i18n="tname-t-qr">QR Code Generator</h3>
+      <p data-i18n="tdesc-t-qr">Turn any link or text into a scannable QR code — download the PNG, free.</p>
     </div>
     <div class="tcard" data-goto="t-myip" role="button" tabindex="0" aria-label="Open What Is My IP">
-      <div class="ico">🌐</div><h3>What Is My IP</h3>
-      <p>See your public IP address in one tap — copy it for forms &amp; setups.</p>
+      <div class="ico">🌐</div><h3 data-i18n="tname-t-myip">What Is My IP</h3>
+      <p data-i18n="tdesc-t-myip">See your public IP address in one tap — copy it for forms &amp; setups.</p>
     </div>
   </div>
 </div>
 
 <section id="studio" aria-label="FreeForge Studio">
 <nav class="tabs" aria-label="Tools">
-  <button class="active" data-tab="t-image">🖼️ AI Image</button>
-  <button data-tab="t-aichat">🤖 AI Chat</button>
-  <button data-tab="t-voice">🎙️ AI Voice</button>
-  <button data-tab="t-story">🎬 Story Video</button>
-  <button data-tab="t-rembg">✂️ BG Remover</button>
-  <button data-tab="t-caption">💬 Captions</button>
-  <button data-tab="t-quote">✨ Quote Maker</button>
-  <button data-tab="t-textvideo">🎥 Text→Video</button>
-  <button data-tab="t-animate">🖼️ Animator</button>
-  <button data-tab="t-age">🎂 Age</button>
-  <button data-tab="t-bmi">⚖️ BMI</button>
-  <button data-tab="t-emi">🏦 EMI</button>
-  <button data-tab="t-pdf">📄 PDF Tools</button>
-  <button data-tab="t-compress">🗜️ Compress</button>
-  <button data-tab="t-unit">📏 Units</button>
-  <button data-tab="t-words">🔤 Words</button>
-  <button data-tab="t-quiz">🧠 Quiz</button>
-  <button data-tab="t-password">🔐 Password</button>
-  <button data-tab="t-anagram">🔡 Anagrams</button>
-  <button data-tab="t-qr">⬛ QR Code</button>
-  <button data-tab="t-myip">🌐 My IP</button>
+  <button class="active" data-tab="t-image">🖼️ <span data-i18n="tab-t-image">AI Image</span></button>
+  <button data-tab="t-aichat">🤖 <span data-i18n="tab-t-aichat">AI Chat</span></button>
+  <button data-tab="t-voice">🎙️ <span data-i18n="tab-t-voice">AI Voice</span></button>
+  <button data-tab="t-story">🎬 <span data-i18n="tab-t-story">Story Video</span></button>
+  <button data-tab="t-rembg">✂️ <span data-i18n="tab-t-rembg">BG Remover</span></button>
+  <button data-tab="t-caption">💬 <span data-i18n="tab-t-caption">Captions</span></button>
+  <button data-tab="t-quote">✨ <span data-i18n="tab-t-quote">Quote Maker</span></button>
+  <button data-tab="t-textvideo">🎥 <span data-i18n="tab-t-textvideo">Text→Video</span></button>
+  <button data-tab="t-animate">🖼️ <span data-i18n="tab-t-animate">Animator</span></button>
+  <button data-tab="t-age">🎂 <span data-i18n="tab-t-age">Age</span></button>
+  <button data-tab="t-bmi">⚖️ <span data-i18n="tab-t-bmi">BMI</span></button>
+  <button data-tab="t-emi">🏦 <span data-i18n="tab-t-emi">EMI</span></button>
+  <button data-tab="t-pdf">📄 <span data-i18n="tab-t-pdf">PDF Tools</span></button>
+  <button data-tab="t-compress">🗜️ <span data-i18n="tab-t-compress">Compress</span></button>
+  <button data-tab="t-unit">📏 <span data-i18n="tab-t-unit">Units</span></button>
+  <button data-tab="t-words">🔤 <span data-i18n="tab-t-words">Words</span></button>
+  <button data-tab="t-quiz">🧠 <span data-i18n="tab-t-quiz">Quiz</span></button>
+  <button data-tab="t-password">🔐 <span data-i18n="tab-t-password">Password</span></button>
+  <button data-tab="t-anagram">🔡 <span data-i18n="tab-t-anagram">Anagrams</span></button>
+  <button data-tab="t-qr">⬛ <span data-i18n="tab-t-qr">QR Code</span></button>
+  <button data-tab="t-myip">🌐 <span data-i18n="tab-t-myip">My IP</span></button>
 </nav>
 
 <main>
   <!-- IMAGE -->
   <section id="t-image" class="tab active" aria-label="AI Image Generator">
-    <h2>AI Image Generator</h2>
+    <h2>Free AI Image Generator — Turn Words Into Images, No Signup</h2>
     <label for="img-prompt">Describe your image</label>
     <input type="text" id="img-prompt" maxlength="500" placeholder="A cute robot drinking tea in a sunny garden, photorealistic">
     <div class="row">
@@ -311,11 +349,78 @@
     <div class="hint">Fair-use daily limits keep it free for everyone.</div>
     <div class="out" id="img-out"></div>
     <div class="err" id="img-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free AI Image Generator</h3>
+<p>The FreeForge AI image generator turns a single sentence into a finished picture — no drawing skills, no software installs, and no account required. It runs on FLUX, a high-quality open image model, so you get detailed, coherent images instead of the blurry outputs many free tools produce. Type a description of what you want to see, pick your canvas size, and the image renders in a few seconds, ready to download.</p>
+<p>How to use it, step by step: (1) Write your prompt in the box — up to 500 characters. Be specific about the subject, the style (photorealistic, anime, 3D render, oil painting), the lighting, and the mood. For example: <em>A cozy log cabin at dusk, warm light in the windows, snow falling, photorealistic.</em> (2) Choose a width and height. Use 1024 × 768 for landscapes, 768 × 1024 for portraits and phone wallpapers, or 1024 × 1024 for square social posts. (3) Leave the model on FLUX and press <b>Generate Image</b>. Your image appears below and can be downloaded or regenerated with a tweaked prompt.</p>
+<p>Prompt tips that genuinely help: put the most important subject first, add one style word and one lighting word, and avoid contradictory instructions ("dark and bright" confuses the model). If the result is close but not perfect, change just one phrase and regenerate — small edits beat total rewrites. People use this tool for YouTube thumbnails, blog headers, story illustrations, wallpapers, and concept art. Once you have an image you like, you can cut its background out with our <b>Background Remover</b>, turn it into a 5-second motion clip with <b>Text to Video</b>, or feature it in an AI-narrated <b>Story Video</b> — all free, right on this page.</p>
+<ul class="facts">
+<li><b>✓</b> FLUX image model — high-detail, coherent output</li>
+<li><b>✓</b> Prompts up to 500 characters; canvas sizes 512, 768 or 1024 px per side</li>
+<li><b>✓</b> 60 free generations per day per visitor — no signup, no watermark</li>
+</ul>
+<h3>AI Image Generator — FAQs</h3>
+<details class="seo-faq"><summary>How does the free AI image generator work?</summary><p>You type a text description (called a prompt). FreeForge sends it to the FLUX image model, which renders a brand-new image matching your description in a few seconds. The image is generated fresh every time — no two generations are identical, even with the same prompt.</p></details>
+<details class="seo-faq"><summary>What image sizes can I generate?</summary><p>You can pick widths and heights of 512, 768 or 1024 pixels and mix them for landscape, portrait or square images. The backend supports up to 2048 px, so larger options may appear as the service grows.</p></details>
+<details class="seo-faq"><summary>Is it really free? What are the limits?</summary><p>Yes — 100% free with no signup. Fair-use limits allow up to 60 image generations per day per visitor, which is more than enough for normal creative use and keeps the free service fast for everyone.</p></details>
+<details class="seo-faq"><summary>Can I use the images commercially?</summary><p>Images are rendered by a third-party free model; check that provider's terms before using them in paid products or ads. For personal projects, blogs, school work and social posts, you're fine.</p></details>
+<details class="seo-faq"><summary>Why was my prompt rejected?</summary><p>A short denylist blocks adult, violent and hateful content to keep the free service safe. Rephrase your prompt without those terms — the block is word-based, so innocent descriptions rarely trip it.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-rembg" data-tablink="t-rembg">Background Remover</a> <a href="#t-quote" data-tablink="t-quote">Quote Card Maker</a> <a href="#t-textvideo" data-tablink="t-textvideo">Text to Video</a> <a href="#t-story" data-tablink="t-story">Story Video Maker</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the free AI image generator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You type a text description (called a prompt). FreeForge sends it to the FLUX image model, which renders a brand-new image matching your description in a few seconds. The image is generated fresh every time — no two generations are identical, even with the same prompt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What image sizes can I generate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can pick widths and heights of 512, 768 or 1024 pixels and mix them for landscape, portrait or square images. The backend supports up to 2048 px, so larger options may appear as the service grows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it really free? What are the limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — 100% free with no signup. Fair-use limits allow up to 60 image generations per day per visitor, which is more than enough for normal creative use and keeps the free service fast for everyone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the images commercially?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Images are rendered by a third-party free model; check that provider's terms before using them in paid products or ads. For personal projects, blogs, school work and social posts, you're fine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why was my prompt rejected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A short denylist blocks adult, violent and hateful content to keep the free service safe. Rephrase your prompt without those terms — the block is word-based, so innocent descriptions rarely trip it."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- AI CHAT -->
   <section id="t-aichat" class="tab" aria-label="AI Chat">
-    <h2>AI Chat</h2>
+    <h2>Free AI Chat — Ask the AI Anything Online, No Signup</h2>
     <p style="color:var(--mut)">Ask anything — get instant AI answers for ideas, homework,
        writing help and more. No signup, 100% free.</p>
     <div class="chat-box" id="chat-box" aria-live="polite">
@@ -327,11 +432,78 @@
     </div>
     <div class="hint">Fair-use daily limits keep it free for everyone. Chat history lives only in this session.</div>
     <div class="err" id="chat-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free AI Chat</h3>
+<p>FreeForge AI Chat is a no-signup chatbot you can talk to like a knowledgeable friend. Ask questions, brainstorm ideas, get homework explained step by step, draft emails, summarize articles, practice a language, or just think out loud — answers arrive in seconds, in plain language. There is no login, no app to install, and no chat history following you around: each session starts fresh when you open the page.</p>
+<p>How to use it: (1) Type your message in the box — up to 1000 characters. (2) Press <b>Send</b> or hit Enter. (3) Read the reply and follow up naturally; you can refine, ask "explain that more simply," or change direction at any time. You get a generous number of messages per day, so long conversations are fine.</p>
+<p>Tips for better answers: be specific instead of vague. "Explain photosynthesis like I'm 12" beats "science help." One question per message works best — the AI answers in roughly 150 words by default, so if you want depth, ask a follow-up like "go deeper on the second point." It shines at explaining concepts, drafting and rewriting text, generating lists of ideas, and helping with school assignments. If you're writing something long, draft it here first, then paste it into our <b>Word Counter</b> to check length and reading time, or into the <b>Caption Generator</b> to turn an idea into a ready-to-post caption. Keep in mind the AI can make mistakes on facts and current events — double-check anything critical.</p>
+<ul class="facts">
+<li><b>✓</b> Up to 1000 characters per message — ask in your own words</li>
+<li><b>✓</b> Concise ~150-word answers; ask follow-ups for more depth</li>
+<li><b>✓</b> 20 free chats per day per visitor; history lives only in your session</li>
+</ul>
+<h3>AI Chat — FAQs</h3>
+<details class="seo-faq"><summary>Is FreeForge AI Chat really free with no signup?</summary><p>Yes. No account, no email, no API key. You type, the AI answers. A fair-use limit of about 20 messages per day per visitor keeps the service free and fast for everyone.</p></details>
+<details class="seo-faq"><summary>Does the AI remember our conversation?</summary><p>Within your current session it follows the thread of the conversation, so follow-up questions work. When you close or refresh the page, the history is gone — nothing is saved to an account because there are no accounts.</p></details>
+<details class="seo-faq"><summary>What can I ask the AI chat about?</summary><p>Almost anything: homework explanations, writing help, brainstorming, translations, coding questions, recipes, study plans, and everyday advice. It refuses harmful, illegal or adult requests.</p></details>
+<details class="seo-faq"><summary>Is the AI always right?</summary><p>No — like all AI models it can confidently state wrong facts, especially about very recent events or niche details. Use it for drafting, learning and ideas, and verify important facts from a second source.</p></details>
+<details class="seo-faq"><summary>Is my chat private?</summary><p>Your messages are sent to the AI service only to generate a reply and are not stored on a FreeForge account. Still, avoid pasting passwords, full names, or other sensitive personal details into any online chatbot.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-words" data-tablink="t-words">Word Counter</a> <a href="#t-caption" data-tablink="t-caption">Caption Generator</a> <a href="#t-quiz" data-tablink="t-quiz">Creator Quiz</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is FreeForge AI Chat really free with no signup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. No account, no email, no API key. You type, the AI answers. A fair-use limit of about 20 messages per day per visitor keeps the service free and fast for everyone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the AI remember our conversation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Within your current session it follows the thread of the conversation, so follow-up questions work. When you close or refresh the page, the history is gone — nothing is saved to an account because there are no accounts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What can I ask the AI chat about?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Almost anything: homework explanations, writing help, brainstorming, translations, coding questions, recipes, study plans, and everyday advice. It refuses harmful, illegal or adult requests."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the AI always right?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — like all AI models it can confidently state wrong facts, especially about very recent events or niche details. Use it for drafting, learning and ideas, and verify important facts from a second source."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my chat private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your messages are sent to the AI service only to generate a reply and are not stored on a FreeForge account. Still, avoid pasting passwords, full names, or other sensitive personal details into any online chatbot."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- VOICE -->
   <section id="t-voice" class="tab" aria-label="AI Voice Generator">
-    <h2>AI Voice Generator</h2>
+    <h2>Free AI Voice Generator — Lifelike Text to Speech Online</h2>
     <label for="v-text">Text to speak (max 2000 characters)</label>
     <textarea id="v-text" maxlength="2000" placeholder="Type or paste your script here..."></textarea>
     <div class="hint"><span id="v-count">0</span>/2000</div>
@@ -341,11 +513,78 @@
     <div class="hint">Fair-use daily limits keep it free for everyone.</div>
     <div class="out" id="v-out"></div>
     <div class="err" id="v-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free AI Voice Generator</h3>
+<p>The FreeForge voice generator converts your written text into natural-sounding spoken audio — real text-to-speech with human-like intonation, not a robot voice. It's built for creators: narrate a YouTube video, voice a podcast intro, make an audio version of a blog post, or generate dialogue for a short film. You pick from 8 lifelike voices, paste your script, and download the result as an MP3 you can drop straight into any editor.</p>
+<p>How to use it, step by step: (1) Paste or type your script into the box — up to 2000 characters per generation. (2) Choose a voice: Ava or Andrew for US English, Sonia or Ryan for UK English, Tanishaa or Nabanita for Bengali, Swara or Madhur for Hindi. (3) Press <b>Generate Voice</b>. In under a minute your MP3 appears, ready to play or download. Need more than 2000 characters? Split your script into parts and generate them one at a time.</p>
+<p>Tips for natural results: write the way people talk — short sentences, commas where you'd pause, and exclamation marks sparingly for emphasis. Spell out numbers and abbreviations the way you want them read ("twenty twenty-six" instead of "2026"). For video narration, pair the voiceover with our <b>Story Video Maker</b>, which can narrate each scene automatically, or drop the MP3 under a motion clip from <b>Text to Video</b>. All voices run on Microsoft's Edge TTS engine and are verified working; generation is free with a fair daily limit per visitor.</p>
+<ul class="facts">
+<li><b>✓</b> 8 lifelike voices: US English, UK English, Bengali and Hindi</li>
+<li><b>✓</b> Up to 2000 characters per generation, delivered as downloadable MP3</li>
+<li><b>✓</b> 20 free voice generations per day per visitor — no signup</li>
+</ul>
+<h3>AI Voice Generator — FAQs</h3>
+<details class="seo-faq"><summary>How does the text-to-speech generator work?</summary><p>Paste text, pick one of 8 voices, and FreeForge synthesizes it into spoken audio using Microsoft's neural text-to-speech engine. The result is an MP3 file you can listen to, download, and reuse in your own projects.</p></details>
+<details class="seo-faq"><summary>Which voices and languages are available?</summary><p>English (US): Ava (female) and Andrew (male). English (UK): Sonia (female) and Ryan (male). Bengali: Tanishaa (female) and Nabanita (female, Bangladesh). Hindi: Swara (female) and Madhur (male).</p></details>
+<details class="seo-faq"><summary>How much text can I convert at once?</summary><p>Up to 2000 characters per generation — roughly 3–4 minutes of spoken audio. Longer scripts can be split into parts and generated separately, then joined in any audio editor.</p></details>
+<details class="seo-faq"><summary>Can I use the voiceovers in my YouTube videos or commercial projects?</summary><p>The audio you generate is yours to use in your content, including monetized videos. If a platform asks about AI-generated audio, disclose it per that platform's rules.</p></details>
+<details class="seo-faq"><summary>Why is there a daily limit?</summary><p>Speech synthesis costs server resources. A fair-use cap of about 20 generations per day per visitor keeps the tool free and responsive for everyone instead of being drained by bots.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-story" data-tablink="t-story">Story Video Maker</a> <a href="#t-textvideo" data-tablink="t-textvideo">Text to Video</a> <a href="#t-caption" data-tablink="t-caption">Caption Generator</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the text-to-speech generator work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paste text, pick one of 8 voices, and FreeForge synthesizes it into spoken audio using Microsoft's neural text-to-speech engine. The result is an MP3 file you can listen to, download, and reuse in your own projects."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which voices and languages are available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "English (US): Ava (female) and Andrew (male). English (UK): Sonia (female) and Ryan (male). Bengali: Tanishaa (female) and Nabanita (female, Bangladesh). Hindi: Swara (female) and Madhur (male)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much text can I convert at once?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Up to 2000 characters per generation — roughly 3–4 minutes of spoken audio. Longer scripts can be split into parts and generated separately, then joined in any audio editor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the voiceovers in my YouTube videos or commercial projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The audio you generate is yours to use in your content, including monetized videos. If a platform asks about AI-generated audio, disclose it per that platform's rules."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is there a daily limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Speech synthesis costs server resources. A fair-use cap of about 20 generations per day per visitor keeps the tool free and responsive for everyone instead of being drained by bots."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- STORY -->
   <section id="t-story" class="tab" aria-label="Story Video Maker">
-    <h2>Story Video Maker</h2>
+    <h2>Free AI Story Video Maker — Videos for Shorts, Reels &amp; TikTok</h2>
     <p style="color:var(--mut)">Write a short story scene by scene. We generate the images,
        narrate each scene, and assemble a vertical or wide video with motion &amp; captions.</p>
     <div class="row">
@@ -381,11 +620,78 @@
     <div class="hint" id="s-status"></div>
     <div class="out" id="s-out"></div>
     <div class="err" id="s-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Story Video Maker</h3>
+<p>The Story Video Maker turns a short story into a finished narrated video — AI-generated scenes, a voiceover reading each scene, smooth Ken Burns motion, and captions burned into the picture. It's the fastest free way to make faceless content for YouTube Shorts, Instagram Reels and TikTok: you supply the story (or let the AI write one), and FreeForge assembles a vertical 1080 × 1920 or wide 1920 × 1080 MP4 you can post directly.</p>
+<p>Two ways to start. <b>Let AI write it:</b> type a topic like "a brave little robot saves the garden," choose 2–6 scenes, and press <b>Write My Story</b> — the AI drafts a narration and an image prompt per scene, which you can edit before rendering. <b>Write it yourself:</b> press <b>+ Add scene</b> (up to 8 scenes), write a 1–2 sentence narration per scene plus a short image prompt describing the visual. Then pick vertical (Shorts/Reels/TikTok) or wide (YouTube), choose a voice, and press <b>Make My Video</b>. Rendering happens in a queue — a 4-scene video usually takes 2–4 minutes. Keep the tab open; your download appears when it's done.</p>
+<p>Tips for videos people actually watch: keep each scene's narration under 30 words so the pacing stays snappy, start scene one with a hook (a question or a bold claim), and describe the image prompt with one clear subject plus a mood word. End with a payoff or a loop back to the start. Voices and images come from the same engines as our standalone <b>AI Voice Generator</b> and <b>AI Image Generator</b> — use those tabs to preview voices or test image styles first. When your video is ready, grab a hook line from the <b>Caption Generator</b> to post it with.</p>
+<ul class="facts">
+<li><b>✓</b> 2–8 scenes per video; AI can draft the story from a single topic</li>
+<li><b>✓</b> Vertical 1080×1920 (Shorts/Reels/TikTok) or wide 1920×1080 (YouTube), 30 fps</li>
+<li><b>✓</b> Voiceover + burned-in captions + subtle ambient tone in every render</li>
+</ul>
+<h3>Story Video Maker — FAQs</h3>
+<details class="seo-faq"><summary>How long does a story video take to render?</summary><p>A 3–4 scene video usually renders in 2–4 minutes. Each scene needs an AI image, a voiceover, and video assembly, processed in a queue — keep the tab open and the download appears automatically.</p></details>
+<details class="seo-faq"><summary>Do I have to write the story myself?</summary><p>No. Type a topic, choose how many scenes you want, and the AI writes a narration and image prompt for each scene. You can edit anything before rendering, or write all scenes yourself for full control.</p></details>
+<details class="seo-faq"><summary>Which video formats are supported?</summary><p>Vertical 9:16 (1080 × 1920) for YouTube Shorts, Instagram Reels and TikTok, and wide 16:9 (1920 × 1080) for standard YouTube videos.</p></details>
+<details class="seo-faq"><summary>Are captions included in the video?</summary><p>Yes — each scene's narration is burned into the picture as captions, plus a very low ambient tone under the voiceover, so the video is watchable with sound off.</p></details>
+<details class="seo-faq"><summary>Is the story video maker really free?</summary><p>Yes, no signup and no watermark. Video rendering is the most resource-heavy tool here, so daily limits are tighter than on the simple tools — but normal creators won't hit them.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-voice" data-tablink="t-voice">AI Voice Generator</a> <a href="#t-image" data-tablink="t-image">AI Image Generator</a> <a href="#t-caption" data-tablink="t-caption">Caption Generator</a> <a href="#t-textvideo" data-tablink="t-textvideo">Text to Video</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does a story video take to render?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 3–4 scene video usually renders in 2–4 minutes. Each scene needs an AI image, a voiceover, and video assembly, processed in a queue — keep the tab open and the download appears automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have to write the story myself?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Type a topic, choose how many scenes you want, and the AI writes a narration and image prompt for each scene. You can edit anything before rendering, or write all scenes yourself for full control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which video formats are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vertical 9:16 (1080 × 1920) for YouTube Shorts, Instagram Reels and TikTok, and wide 16:9 (1920 × 1080) for standard YouTube videos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are captions included in the video?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — each scene's narration is burned into the picture as captions, plus a very low ambient tone under the voiceover, so the video is watchable with sound off."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the story video maker really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, no signup and no watermark. Video rendering is the most resource-heavy tool here, so daily limits are tighter than on the simple tools — but normal creators won't hit them."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- BACKGROUND REMOVER -->
   <section id="t-rembg" class="tab" aria-label="Background Remover">
-    <h2>Background Remover</h2>
+    <h2>Free Background Remover — Transparent PNG in Seconds</h2>
     <p style="color:var(--mut)">Upload a photo (JPG, PNG or WebP, max 10MB).
        We cut out the subject and give you back a transparent PNG — perfect for thumbnails &amp; designs.</p>
     <label for="bg-file">Choose an image</label>
@@ -394,11 +700,78 @@
     <div class="hint">Your photo is processed on our server and never shared with anyone.</div>
     <div class="out" id="bg-out"></div>
     <div class="err" id="bg-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Background Remover</h3>
+<p>The FreeForge background remover cuts the subject out of any photo and hands you a clean transparent PNG — the kind of cutout designers pay for. Upload a product photo, a portrait, a pet picture or a logo mockup, and the AI separates the foreground from the background automatically. The result is perfect for YouTube thumbnails, e-commerce listings, presentations, memes and social graphics.</p>
+<p>How to use it: (1) Click <b>Choose an image</b> and pick a JPG, PNG or WebP photo up to 10 MB. (2) Press <b>Remove Background</b>. (3) Download the transparent PNG that appears. That's it — no selecting, no masking, no Photoshop. Processing takes a few seconds per photo and happens on our server, so it works even on low-end phones.</p>
+<p>Tips for the cleanest cutouts: use photos where the subject stands out from the background — good lighting and contrast help enormously. Busy backgrounds with similar colors to the subject (a brown dog on a brown couch) are the hardest case; a quick re-shoot with distance between subject and background fixes most failures. Hair and fur edges come out remarkably well, but ultra-fine wisps may need a touch-up. Your photos are processed on our server and never shared with anyone. For best results, generate or upscale your source image first with our <b>AI Image Generator</b>, then remove the background, then shrink the final file with the <b>Image Compressor</b> before uploading it anywhere.</p>
+<ul class="facts">
+<li><b>✓</b> JPG, PNG or WebP uploads up to 10 MB</li>
+<li><b>✓</b> Transparent PNG output, processed in seconds on our server</li>
+<li><b>✓</b> 10 free removals per day per visitor — photos never shared</li>
+</ul>
+<h3>Background Remover — FAQs</h3>
+<details class="seo-faq"><summary>How does the background remover work?</summary><p>Upload a photo and an AI segmentation model identifies the main subject — person, product, animal or object — and erases everything else, returning the cutout as a transparent PNG you can place on any background.</p></details>
+<details class="seo-faq"><summary>Which image formats can I upload?</summary><p>JPG, PNG and WebP, up to 10 MB per photo. The download is always a transparent PNG, which is the format that preserves transparency.</p></details>
+<details class="seo-faq"><summary>Are my photos kept private?</summary><p>Yes. Your photo is processed on the FreeForge server only to remove the background and is never shared with anyone or used for anything else.</p></details>
+<details class="seo-faq"><summary>What if the cutout looks messy around hair or edges?</summary><p>Start with a well-lit photo where the subject contrasts with the background. Fine hair on a similarly-colored background is the toughest case — re-shooting with more separation between subject and background fixes it almost every time.</p></details>
+<details class="seo-faq"><summary>Is there a daily limit?</summary><p>Yes — about 10 removals per day per visitor. That keeps the free AI processing fast for everyone.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-image" data-tablink="t-image">AI Image Generator</a> <a href="#t-compress" data-tablink="t-compress">Image Compressor</a> <a href="#t-quote" data-tablink="t-quote">Quote Card Maker</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the background remover work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upload a photo and an AI segmentation model identifies the main subject — person, product, animal or object — and erases everything else, returning the cutout as a transparent PNG you can place on any background."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which image formats can I upload?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JPG, PNG and WebP, up to 10 MB per photo. The download is always a transparent PNG, which is the format that preserves transparency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my photos kept private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your photo is processed on the FreeForge server only to remove the background and is never shared with anyone or used for anything else."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if the cutout looks messy around hair or edges?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with a well-lit photo where the subject contrasts with the background. Fine hair on a similarly-colored background is the toughest case — re-shooting with more separation between subject and background fixes it almost every time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a daily limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — about 10 removals per day per visitor. That keeps the free AI processing fast for everyone."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- CAPTION & HASHTAG GENERATOR -->
   <section id="t-caption" class="tab" aria-label="Caption and Hashtag Generator">
-    <h2>Caption &amp; Hashtag Generator</h2>
+    <h2>Free Caption &amp; Hashtag Generator — For Reels, TikTok &amp; Shorts</h2>
     <p style="color:var(--mut)">For Reels, TikTok &amp; Shorts creators — get 3 ready-to-post captions
        + 10 hashtags in seconds. Tap any result to copy it.</p>
     <label for="c-topic">What's your post about?</label>
@@ -422,11 +795,78 @@
     <div class="hint">Fair-use daily limits keep it free for everyone.</div>
     <div class="out" id="c-out" style="text-align:left"></div>
     <div class="err" id="c-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Caption &amp; Hashtag Generator</h3>
+<p>Staring at a finished video with no idea what to write under it? The FreeForge caption generator writes your post copy for you: describe your post in a few words and get 3 ready-to-post captions plus 10 relevant hashtags, tuned for the platform you're posting to. Pick a tone — funny, professional or inspirational — and tap any result to copy it straight into Instagram, TikTok, YouTube Shorts or Facebook.</p>
+<p>How to use it: (1) Type what your post is about — up to 200 characters, e.g. "morning coffee routine" or "small business packaging orders." Be specific; "gym" gives generic captions, "first deadlift PR at 6am" gives good ones. (2) Choose your platform: Instagram Reels, TikTok, YouTube Shorts or Facebook — caption style and hashtag mix adapt to each. (3) Pick a tone and press <b>Generate Captions</b>. You get exactly 3 captions and 10 hashtags (single words or camelCase, mixing broad and niche tags). Tap to copy, paste, post.</p>
+<p>Tips: generate a few rounds and mix the best lines — the tool is a starting point, not a final draft. Add 1–2 hashtags specific to your niche by hand for the best reach, and put the most important hashtags first on Instagram. Creators pairing this with the <b>Story Video Maker</b> or <b>Text to Video</b> can go from raw idea to posted Reel in minutes: make the clip, generate the caption here, and finish the post with a <b>Quote Card</b> as the cover image.</p>
+<ul class="facts">
+<li><b>✓</b> Exactly 3 captions + 10 hashtags per generation, tuned per platform</li>
+<li><b>✓</b> 4 platforms (Reels, TikTok, Shorts, Facebook) × 3 tones (funny, professional, inspirational)</li>
+<li><b>✓</b> Tap-to-copy results; 20 free generations per day per visitor</li>
+</ul>
+<h3>Caption &amp; Hashtag Generator — FAQs</h3>
+<details class="seo-faq"><summary>How many captions and hashtags do I get?</summary><p>Every generation returns exactly 3 full captions and exactly 10 hashtags — no more, no fewer. The hashtags mix broad tags (more reach) with niche tags (more relevant viewers).</p></details>
+<details class="seo-faq"><summary>Which platforms are supported?</summary><p>Instagram Reels, TikTok, YouTube Shorts and Facebook. Caption length, style and hashtag strategy adjust to each platform's norms.</p></details>
+<details class="seo-faq"><summary>Can I edit the captions before posting?</summary><p>Absolutely — and you should. Treat the output as a strong first draft: tweak the wording to sound like you, then tap to copy and paste into your app.</p></details>
+<details class="seo-faq"><summary>Is the caption generator free?</summary><p>Yes, no signup. Fair-use limits allow about 20 generations per day per visitor, which covers a full week of daily posting in one sitting.</p></details>
+<details class="seo-faq"><summary>Do hashtags still matter in 2026?</summary><p>They're a discovery aid, not magic. Relevant niche hashtags help the algorithm categorize your post; the content itself does the heavy lifting. That's why the tool mixes broad and niche tags instead of spamming generic ones.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-story" data-tablink="t-story">Story Video Maker</a> <a href="#t-quote" data-tablink="t-quote">Quote Card Maker</a> <a href="#t-words" data-tablink="t-words">Word Counter</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many captions and hashtags do I get?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every generation returns exactly 3 full captions and exactly 10 hashtags — no more, no fewer. The hashtags mix broad tags (more reach) with niche tags (more relevant viewers)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which platforms are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Instagram Reels, TikTok, YouTube Shorts and Facebook. Caption length, style and hashtag strategy adjust to each platform's norms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit the captions before posting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely — and you should. Treat the output as a strong first draft: tweak the wording to sound like you, then tap to copy and paste into your app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the caption generator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, no signup. Fair-use limits allow about 20 generations per day per visitor, which covers a full week of daily posting in one sitting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do hashtags still matter in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They're a discovery aid, not magic. Relevant niche hashtags help the algorithm categorize your post; the content itself does the heavy lifting. That's why the tool mixes broad and niche tags instead of spamming generic ones."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- QUOTE / MEME MAKER -->
   <section id="t-quote" class="tab" aria-label="Quote Maker">
-    <h2>Quote / Meme Maker</h2>
+    <h2>Free Quote Card Maker — 1080×1080 Images for Instagram</h2>
     <p style="color:var(--mut)">Type any line — get a beautiful 1080×1080 quote card,
        perfect for Instagram &amp; Facebook posts.</p>
     <label for="q-text">Your quote (max 300 characters)</label>
@@ -443,11 +883,78 @@
     <div class="hint">Rendered instantly on our server — no AI queue.</div>
     <div class="out" id="q-out"></div>
     <div class="err" id="q-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Quote Card Maker</h3>
+<p>Turn any line of text into a beautiful square quote card — the 1080 × 1080 format Instagram and Facebook love. Type a motivational quote, a lyric, a business mantra or a funny one-liner, pick one of four gradient styles (Sunset, Ocean, Dark, Neon), and get a polished, centered, ready-to-post image in seconds. No design app, no templates to fiddle with, no account.</p>
+<p>How to use it: (1) Type your quote — up to 300 characters. Shorter quotes (under ~120 characters) lay out best, with big readable type. (2) Choose a style: Sunset for warm inspiration, Ocean for calm professionalism, Dark for bold minimalism, Neon for high-energy posts. (3) Press <b>Make Quote Card</b> and download the PNG. Rendering is instant — it's drawn on the server, not queued behind AI jobs — so you can iterate through styles in seconds.</p>
+<p>Tips: put the attribution on a second line ("— Maya Angelou") so the quote itself stays large. Line breaks are respected, so shape the text deliberately. These cards pair perfectly with captions from our <b>Caption Generator</b> — quote image plus AI-written caption is a complete post in under a minute. Need a custom background instead of a gradient? Generate one with the <b>AI Image Generator</b>, or shrink an oversized download with the <b>Image Compressor</b> before posting.</p>
+<ul class="facts">
+<li><b>✓</b> 1080 × 1080 px square cards — the native Instagram/Facebook post size</li>
+<li><b>✓</b> 4 gradient styles: Sunset, Ocean, Dark, Neon</li>
+<li><b>✓</b> Instant server-side rendering; up to 300 characters; 30 free cards per day</li>
+</ul>
+<h3>Quote Card Maker — FAQs</h3>
+<details class="seo-faq"><summary>What size are the quote cards?</summary><p>1080 × 1080 pixels — the standard square format for Instagram and Facebook feed posts. They look sharp on all screens and also work as story backgrounds.</p></details>
+<details class="seo-faq"><summary>Which styles can I choose?</summary><p>Four gradient styles: Sunset (warm orange-pink), Ocean (cool blue), Dark (bold black minimal), and Neon (high-energy glow).</p></details>
+<details class="seo-faq"><summary>Can I add the author's name?</summary><p>Yes — just type it on its own line, e.g. your quote, line break, "— Author Name". Line breaks are preserved in the layout.</p></details>
+<details class="seo-faq"><summary>Is the quote maker instant and free?</summary><p>Yes. Cards are drawn on the server in seconds with no AI queue, and you can make about 30 per day per visitor — all free, no signup.</p></details>
+<details class="seo-faq"><summary>What quotes work best as cards?</summary><p>Short ones. Under ~120 characters the type stays large and readable; long paragraphs shrink the text. One strong line beats three okay lines.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-caption" data-tablink="t-caption">Caption Generator</a> <a href="#t-image" data-tablink="t-image">AI Image Generator</a> <a href="#t-compress" data-tablink="t-compress">Image Compressor</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What size are the quote cards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1080 × 1080 pixels — the standard square format for Instagram and Facebook feed posts. They look sharp on all screens and also work as story backgrounds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which styles can I choose?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Four gradient styles: Sunset (warm orange-pink), Ocean (cool blue), Dark (bold black minimal), and Neon (high-energy glow)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add the author's name?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — just type it on its own line, e.g. your quote, line break, \"— Author Name\". Line breaks are preserved in the layout."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the quote maker instant and free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Cards are drawn on the server in seconds with no AI queue, and you can make about 30 per day per visitor — all free, no signup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What quotes work best as cards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Short ones. Under ~120 characters the type stays large and readable; long paragraphs shrink the text. One strong line beats three okay lines."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- TEXT TO VIDEO -->
   <section id="t-textvideo" class="tab" aria-label="Text to Video">
-    <h2>Text to Video</h2>
+    <h2>Free Text to Video — Turn a Sentence Into a 5-Second Clip</h2>
     <p style="color:var(--mut)">Describe a scene in one line. AI generates the image,
        then we add smooth cinematic motion to turn it into a 5-second video —
        perfect for Shorts, Reels &amp; TikTok.</p>
@@ -472,11 +979,78 @@
     <div class="hint" id="tv-status"></div>
     <div class="out" id="tv-out"></div>
     <div class="err" id="tv-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Text to Video</h3>
+<p>The FreeForge text-to-video tool turns one line of description into a 5-second video clip with smooth cinematic motion — perfect for Shorts, Reels and TikTok intros, backgrounds and b-roll. Here's the honest version: it generates a high-quality AI image from your text, then applies professional motion (slow zoom-in, pan, or a cinematic mix of moves) to create the clip. It's a fast, free motion-style video — not native diffusion video like heavyweight studio models — and for most short-form uses, viewers can't tell the difference.</p>
+<p>How to use it: (1) Describe one clear scene in up to 300 characters — e.g. "a lighthouse on a cliff at sunset, waves crashing below." One subject, one setting, one mood works best. (2) Pick a motion style: Zoom in (dramatic reveal), Pan right (landscape sweep), or Cinematic mix (blended moves). (3) Choose vertical 9:16 for Shorts/Reels/TikTok or wide 16:9 for YouTube. (4) Press <b>Make My Video</b>. The image renders first, then motion is applied — the whole thing takes about 1–2 minutes. Keep the tab open; your MP4 appears automatically.</p>
+<p>Tips for clips that look expensive: describe scenes with depth (foreground + background gives the motion something to travel through), avoid asking for complex action or text in the image, and keep prompts to a single moment in time. Add a voiceover from our <b>AI Voice Generator</b> or build a multi-scene narrated piece with the <b>Story Video Maker</b> instead. Want to animate a photo you already have rather than generating one? That's what the <b>Photo Animator</b> is for.</p>
+<ul class="facts">
+<li><b>✓</b> 5-second motion clips: AI image + cinematic zoom/pan motion</li>
+<li><b>✓</b> 3 motion styles (Zoom in, Pan right, Cinematic mix) × vertical 9:16 or wide 16:9</li>
+<li><b>✓</b> About 1–2 minutes per render; 5 free videos per day per visitor</li>
+</ul>
+<h3>Text to Video — FAQs</h3>
+<details class="seo-faq"><summary>Is this real AI video generation?</summary><p>Honestly: it's motion-style video. An AI image is generated from your text, then smooth cinematic motion (zoom/pan) turns it into a 5-second clip. It's fast and free — true diffusion video models need far more compute than a free tier can offer.</p></details>
+<details class="seo-faq"><summary>How long are the videos?</summary><p>5 seconds each — the sweet spot for short-form intros, loops, backgrounds and b-roll. For longer narrated videos, use the Story Video Maker.</p></details>
+<details class="seo-faq"><summary>Why does it take 1–2 minutes?</summary><p>Two steps happen in sequence: first the AI image is generated, then motion is rendered frame by frame. Keep the tab open and the finished MP4 appears automatically.</p></details>
+<details class="seo-faq"><summary>What's the daily limit?</summary><p>About 5 text-to-video renders per day per visitor. Video rendering is the most compute-heavy feature on the site, so limits keep it free for everyone.</p></details>
+<details class="seo-faq"><summary>What prompts work best?</summary><p>Single clear scenes with depth — a subject in the foreground and an interesting background. Avoid complex multi-step action, small text, or crowded compositions; the motion looks best on clean, cinematic images.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-animate" data-tablink="t-animate">Photo Animator</a> <a href="#t-story" data-tablink="t-story">Story Video Maker</a> <a href="#t-image" data-tablink="t-image">AI Image Generator</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this real AI video generation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Honestly: it's motion-style video. An AI image is generated from your text, then smooth cinematic motion (zoom/pan) turns it into a 5-second clip. It's fast and free — true diffusion video models need far more compute than a free tier can offer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long are the videos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "5 seconds each — the sweet spot for short-form intros, loops, backgrounds and b-roll. For longer narrated videos, use the Story Video Maker."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does it take 1–2 minutes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two steps happen in sequence: first the AI image is generated, then motion is rendered frame by frame. Keep the tab open and the finished MP4 appears automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the daily limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About 5 text-to-video renders per day per visitor. Video rendering is the most compute-heavy feature on the site, so limits keep it free for everyone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What prompts work best?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Single clear scenes with depth — a subject in the foreground and an interesting background. Avoid complex multi-step action, small text, or crowded compositions; the motion looks best on clean, cinematic images."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- PHOTO ANIMATOR -->
   <section id="t-animate" class="tab" aria-label="Photo Animator">
-    <h2>Photo Animator</h2>
+    <h2>Free Photo Animator — Turn Still Photos Into Video Clips</h2>
     <p style="color:var(--mut)">Upload a photo (JPG, PNG or WebP, max 10MB).
        We turn it into a 5-second video with smooth cinematic zoom &amp; pan.</p>
     <label for="an-file">Choose a photo</label>
@@ -500,7 +1074,74 @@
     <div class="hint" id="an-status"></div>
     <div class="out" id="an-out"></div>
     <div class="err" id="an-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Photo Animator</h3>
+<p>The FreeForge photo animator brings still pictures to life: upload any photo and get a 5-second video with smooth cinematic zoom and pan — the Ken Burns effect that makes slideshows and Reels feel professional. Old family photos, travel shots, product pictures and portraits all work. It's the fastest way to turn a camera roll into motion content for Shorts, Reels and TikTok, free and with no signup.</p>
+<p>How to use it: (1) Click <b>Choose a photo</b> and upload a JPG, PNG or WebP image up to 10 MB. (2) Pick a motion style: Zoom in for a dramatic push toward the subject, Pan right for a sweeping reveal, or Cinematic mix for blended movement. (3) Choose vertical 9:16 (Shorts/Reels/TikTok) or wide 16:9 (YouTube). (4) Press <b>Animate My Photo</b>. Rendering takes about a minute; keep the tab open and download the MP4 when it appears. Your photo is processed on our server and never shared with anyone.</p>
+<p>Tips: high-resolution photos animate best — motion magnifies blur, so start sharp. Portraits and landscapes with a clear subject outperform busy group shots. If your photo has a distracting background, clean it first with our <b>Background Remover</b>, or generate a perfect starting image with the <b>AI Image Generator</b> and animate that. For narrated multi-scene videos, step up to the <b>Story Video Maker</b>, which adds voiceover and captions.</p>
+<ul class="facts">
+<li><b>✓</b> Upload JPG, PNG or WebP photos up to 10 MB</li>
+<li><b>✓</b> 5-second clips with 3 cinematic motion styles, vertical or wide</li>
+<li><b>✓</b> About a minute per render; 5 free animations per day; photos never shared</li>
+</ul>
+<h3>Photo Animator — FAQs</h3>
+<details class="seo-faq"><summary>How does photo animation work?</summary><p>Your uploaded photo is processed with cinematic motion effects — slow zooms and pans (the Ken Burns effect) — and rendered into a 5-second MP4 video. The photo itself doesn't change; motion is applied over it.</p></details>
+<details class="seo-faq"><summary>Which photos animate best?</summary><p>Sharp, high-resolution photos with one clear subject: portraits, landscapes, products, architecture. Blurry or very busy images look worse once motion magnifies them.</p></details>
+<details class="seo-faq"><summary>Is my photo kept private?</summary><p>Yes. It's processed on the FreeForge server only to create your video and is never shared with anyone.</p></details>
+<details class="seo-faq"><summary>How long does it take, and is it free?</summary><p>About a minute per photo, free with no signup. Fair-use limits allow around 5 animations per day per visitor.</p></details>
+<details class="seo-faq"><summary>Can I choose the video format?</summary><p>Yes — vertical 9:16 for Shorts, Reels and TikTok, or wide 16:9 for YouTube.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-textvideo" data-tablink="t-textvideo">Text to Video</a> <a href="#t-story" data-tablink="t-story">Story Video Maker</a> <a href="#t-rembg" data-tablink="t-rembg">Background Remover</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does photo animation work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your uploaded photo is processed with cinematic motion effects — slow zooms and pans (the Ken Burns effect) — and rendered into a 5-second MP4 video. The photo itself doesn't change; motion is applied over it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which photos animate best?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sharp, high-resolution photos with one clear subject: portraits, landscapes, products, architecture. Blurry or very busy images look worse once motion magnifies them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my photo kept private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It's processed on the FreeForge server only to create your video and is never shared with anyone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take, and is it free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About a minute per photo, free with no signup. Fair-use limits allow around 5 animations per day per visitor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I choose the video format?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — vertical 9:16 for Shorts, Reels and TikTok, or wide 16:9 for YouTube."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- AGE CALCULATOR -->
   <section id="t-age" class="tab" aria-label="Free Age Calculator">
@@ -513,7 +1154,74 @@
     <button class="go" id="age-go">Calculate My Age — Free</button>
     <div class="out" id="age-out" style="text-align:left"></div>
     <div class="err" id="age-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Age Calculator</h3>
+<p>The FreeForge age calculator answers "how old am I, exactly?" — not just the year count, but your precise chronological age in years, months and days. It also tells you which day of the week you were born on and counts down the days to your next birthday. Everything runs instantly in your browser: enter a date of birth, get the answer, done. No signup, no data sent anywhere.</p>
+<p>How to use it: (1) Click the date field and pick your date of birth (or anyone's — it works for calculating a child's, parent's or friend's age too). (2) Press <b>Calculate My Age</b>. You'll see the full breakdown — years, months, days — plus your birth weekday and a live countdown to your next birthday. Planning a milestone? The countdown makes 30th, 40th and 50th birthdays easy to track.</p>
+<p>The calculation handles leap years correctly, so February 29 birthdays and month-length quirks come out right. Because it runs entirely on your device, your birthdate never leaves your browser — there's nothing to leak. It's handy for forms that ask for exact age, for checking age eligibility, or just for fun ("I'm 10,000 days old today" is a great party trick). Pair it with the <b>BMI Calculator</b> for a quick health snapshot, or use the <b>Unit Converter</b> when a form wants your height or weight in different units.</p>
+<ul class="facts">
+<li><b>✓</b> Exact age in years, months and days — leap-year accurate</li>
+<li><b>✓</b> Bonus results: day of the week you were born + next-birthday countdown</li>
+<li><b>✓</b> 100% private: runs in your browser, your birthdate never leaves your device</li>
+</ul>
+<h3>Age Calculator — FAQs</h3>
+<details class="seo-faq"><summary>How is my exact age calculated?</summary><p>The calculator compares your date of birth with today's date, borrowing days and months correctly across month boundaries — the same method official age calculations use, including leap years.</p></details>
+<details class="seo-faq"><summary>Does it handle leap years and February 29 birthdays?</summary><p>Yes. Month lengths and leap years are accounted for, so leap-day babies and end-of-month birthdays get correct results.</p></details>
+<details class="seo-faq"><summary>Is my date of birth stored or sent anywhere?</summary><p>No. The calculation runs entirely in your browser. Nothing is uploaded, logged or stored — close the tab and it's gone.</p></details>
+<details class="seo-faq"><summary>Can I calculate someone else's age?</summary><p>Yes — enter any date of birth. It's useful for checking a child's exact age for school enrollment or a parent's for a milestone birthday.</p></details>
+<details class="seo-faq"><summary>Is the age calculator free?</summary><p>Completely free, unlimited use, no signup — like every tool on this page.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-bmi" data-tablink="t-bmi">BMI Calculator</a> <a href="#t-emi" data-tablink="t-emi">EMI Calculator</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is my exact age calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator compares your date of birth with today's date, borrowing days and months correctly across month boundaries — the same method official age calculations use, including leap years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it handle leap years and February 29 birthdays?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Month lengths and leap years are accounted for, so leap-day babies and end-of-month birthdays get correct results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my date of birth stored or sent anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The calculation runs entirely in your browser. Nothing is uploaded, logged or stored — close the tab and it's gone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I calculate someone else's age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — enter any date of birth. It's useful for checking a child's exact age for school enrollment or a parent's for a milestone birthday."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the age calculator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Completely free, unlimited use, no signup — like every tool on this page."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- BMI CALCULATOR -->
   <section id="t-bmi" class="tab" aria-label="Free BMI Calculator">
@@ -530,7 +1238,74 @@
     <div class="out" id="bmi-out" style="text-align:left"></div>
     <div class="err" id="bmi-err"></div>
     <div class="hint">BMI is a general screening measure, not a medical diagnosis. Talk to a doctor for health advice.</div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free BMI Calculator</h3>
+<p>Body Mass Index (BMI) is the standard quick screening number for weight status: your weight relative to your height. The FreeForge BMI calculator computes it instantly from your height and weight, shows which category you fall into (underweight, healthy, overweight, obese), and displays your personal healthy weight range in kilograms. It's a 10-second check that gives you a useful starting point for a conversation about health.</p>
+<p>How to use it: (1) Enter your height in centimeters (50–250) and your weight in kilograms (10–400). If you only know feet/inches or pounds, convert them first with our <b>Unit Converter</b>. (2) Press <b>Calculate My BMI</b>. Your BMI number appears with its category and the healthy weight range for your height — e.g. what you'd need to weigh to sit in the 18.5–24.9 band.</p>
+<p>What the number means: BMI is a screening measure, not a diagnosis. It doesn't distinguish muscle from fat, so athletes can score "overweight" while being very fit, and it doesn't reflect where fat is carried. Treat it as one data point: if your result surprises you, or you're planning diet or exercise changes, talk to a doctor or qualified health professional rather than acting on the number alone. The calculator itself is free, private and unlimited — nothing you enter leaves your browser.</p>
+<ul class="facts">
+<li><b>✓</b> Height 50–250 cm + weight 10–400 kg → instant BMI with category</li>
+<li><b>✓</b> Shows your personal healthy weight range, not just the number</li>
+<li><b>✓</b> Screening tool only — not a medical diagnosis; runs privately in your browser</li>
+</ul>
+<h3>BMI Calculator — FAQs</h3>
+<details class="seo-faq"><summary>What is BMI?</summary><p>Body Mass Index = weight (kg) divided by height (m) squared. It's the most widely used quick screening measure for weight status, used by health organizations worldwide as a first-pass indicator.</p></details>
+<details class="seo-faq"><summary>What are the BMI categories?</summary><p>Under 18.5 is underweight, 18.5–24.9 is the healthy range, 25–29.9 is overweight, and 30+ is obese. The calculator shows your category automatically.</p></details>
+<details class="seo-faq"><summary>Is BMI accurate for everyone?</summary><p>Not entirely — it can't tell muscle from fat, so muscular people may score high while being fit, and it doesn't account for age, sex or fat distribution. Use it as a screening starting point, not a verdict.</p></details>
+<details class="seo-faq"><summary>Should I see a doctor about my BMI?</summary><p>If your BMI is outside the healthy range or you're considering weight changes, yes — a doctor can assess the full picture. This tool is informational only and not medical advice.</p></details>
+<details class="seo-faq"><summary>Is my height and weight data private?</summary><p>Yes. The calculation happens in your browser; nothing is sent to any server or stored.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-age" data-tablink="t-age">Age Calculator</a> <a href="#t-unit" data-tablink="t-unit">Unit Converter</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is BMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Body Mass Index = weight (kg) divided by height (m) squared. It's the most widely used quick screening measure for weight status, used by health organizations worldwide as a first-pass indicator."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the BMI categories?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under 18.5 is underweight, 18.5–24.9 is the healthy range, 25–29.9 is overweight, and 30+ is obese. The calculator shows your category automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is BMI accurate for everyone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not entirely — it can't tell muscle from fat, so muscular people may score high while being fit, and it doesn't account for age, sex or fat distribution. Use it as a screening starting point, not a verdict."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I see a doctor about my BMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your BMI is outside the healthy range or you're considering weight changes, yes — a doctor can assess the full picture. This tool is informational only and not medical advice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my height and weight data private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The calculation happens in your browser; nothing is sent to any server or stored."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- EMI CALCULATOR -->
   <section id="t-emi" class="tab" aria-label="Free EMI Calculator">
@@ -548,7 +1323,75 @@
     <button class="go" id="emi-go">Calculate My EMI — Free</button>
     <div class="out" id="emi-out" style="text-align:left"></div>
     <div class="err" id="emi-err"></div>
-  </section>
+    <div class="hint">Results are estimates for planning only — actual loan costs can differ with fees, taxes and insurance. Not financial advice.</div>
+  
+<div class="seo-copy">
+<h3>How to use the free EMI Calculator</h3>
+<p>EMI (Equated Monthly Installment) is the fixed amount you pay your lender every month until a loan is fully repaid. The FreeForge EMI calculator shows that number instantly for home loans, car loans, personal loans or any borrowing: enter the loan amount, the annual interest rate and the tenure, and you get your monthly EMI, the total interest you'll pay, and the total amount payable over the life of the loan.</p>
+<p>How to use it: (1) Enter the loan amount (minimum 1,000 in your currency). (2) Enter the annual interest rate — between 0.1% and 40% per year. (3) Enter the tenure in months, up to 360 (30 years). (4) Press <b>Calculate My EMI</b>. Try different tenures to see the trade-off: longer tenure means smaller monthly payments but much more total interest.</p>
+<p>A practical example: borrowing 500,000 at 9.5% for 60 months gives a very different monthly burden than the same loan over 120 months — the calculator makes the comparison instant, so you can walk into a bank already knowing what you can afford. Note these are <b>estimates for planning</b>: real loans add processing fees, insurance and taxes that this calculator doesn't include, and rates vary by lender. This is an educational tool, not financial advice — for big borrowing decisions, confirm numbers with your bank or a qualified financial adviser.</p>
+<ul class="facts">
+<li><b>✓</b> Loan amount, rate (0.1–40%/yr) and tenure (1–360 months) → monthly EMI</li>
+<li><b>✓</b> Also shows total interest payable and total amount over the loan's life</li>
+<li><b>✓</b> Estimates for planning only — not financial advice; fees/taxes not included</li>
+</ul>
+<h3>EMI Calculator — FAQs</h3>
+<details class="seo-faq"><summary>What is EMI?</summary><p>Equated Monthly Installment — the fixed monthly payment that repays a loan (principal + interest) over its tenure. Every payment covers that month's interest plus a slice of the principal.</p></details>
+<details class="seo-faq"><summary>How is EMI calculated?</summary><p>With the standard reducing-balance formula: EMI = P × r × (1+r)^n / ((1+r)^n − 1), where P is principal, r the monthly rate, n the number of months. The calculator applies it instantly.</p></details>
+<details class="seo-faq"><summary>Does the result include processing fees and insurance?</summary><p>No — the calculator covers principal + interest only. Real loans add processing fees, insurance, and taxes, so treat the output as a planning estimate and confirm final figures with your lender.</p></details>
+<details class="seo-faq"><summary>Is a longer tenure better?</summary><p>It lowers the monthly payment but increases total interest paid — sometimes dramatically. Use the calculator to compare total interest across tenures before deciding.</p></details>
+<details class="seo-faq"><summary>Is this financial advice?</summary><p>No. It's a free estimation tool for planning and comparison. For actual borrowing decisions, speak to your bank or a qualified financial adviser.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-age" data-tablink="t-age">Age Calculator</a> <a href="#t-bmi" data-tablink="t-bmi">BMI Calculator</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is EMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Equated Monthly Installment — the fixed monthly payment that repays a loan (principal + interest) over its tenure. Every payment covers that month's interest plus a slice of the principal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is EMI calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With the standard reducing-balance formula: EMI = P × r × (1+r)^n / ((1+r)^n − 1), where P is principal, r the monthly rate, n the number of months. The calculator applies it instantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the result include processing fees and insurance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — the calculator covers principal + interest only. Real loans add processing fees, insurance, and taxes, so treat the output as a planning estimate and confirm final figures with your lender."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a longer tenure better?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It lowers the monthly payment but increases total interest paid — sometimes dramatically. Use the calculator to compare total interest across tenures before deciding."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this financial advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It's a free estimation tool for planning and comparison. For actual borrowing decisions, speak to your bank or a qualified financial adviser."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- PDF TOOLS -->
   <section id="t-pdf" class="tab" aria-label="Free PDF Tools">
@@ -592,7 +1435,74 @@
       <div class="err" id="pdfs-err"></div>
     </div>
     <div class="hint">Fair-use daily limits keep it free for everyone.</div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free PDF Tools</h3>
+<p>FreeForge packs three essential PDF tools into one free tab: <b>compress</b> a PDF to shrink its file size for email and uploads, <b>merge</b> up to 10 PDFs into a single document, and <b>split</b> selected pages out of a PDF into a new file. No software to install, no account, no watermark stamped on your documents — and your files are processed on our server and never shared with anyone.</p>
+<p>How to use each tool: <b>Compress</b> — upload a PDF (up to 25 MB), and get a smaller version back, ideal when an application portal or email rejects oversized files. <b>Merge</b> — upload 2 to 10 PDFs in the order you want them, and download one combined document; great for assembling applications, reports or scanned chapters. <b>Split</b> — upload a PDF and specify the pages to extract (e.g. pages 1–3 and 5), and get a new PDF with just those pages — perfect for pulling one chapter or one invoice out of a long file.</p>
+<p>Practical notes: merging preserves each file's pages in the order you upload, so arrange them first. Splitting up to 500 pages per file is supported. If a compressed PDF is still too big, try compressing images inside it first — or shrink source images with our <b>Image Compressor</b> before creating the PDF. Need the PDF as a scannable link for print? Generate a <b>QR Code</b> pointing at it. All PDF work here is free with fair daily limits per visitor.</p>
+<ul class="facts">
+<li><b>✓</b> Merge up to 10 PDFs into one, in your chosen order</li>
+<li><b>✓</b> Split any page range out (up to 500 pages); compress files up to 25 MB</li>
+<li><b>✓</b> Private processing — files are never shared; 20 free operations per day</li>
+</ul>
+<h3>PDF Tools — FAQs</h3>
+<details class="seo-faq"><summary>How do I merge PDFs?</summary><p>Upload 2 to 10 PDF files in the order you want them combined, then download the single merged document. Page order follows your upload order.</p></details>
+<details class="seo-faq"><summary>How do I split pages out of a PDF?</summary><p>Upload the PDF and specify which pages to extract — for example pages 1–3 and 5. You get a new PDF containing only those pages.</p></details>
+<details class="seo-faq"><summary>Will compressing a PDF ruin its quality?</summary><p>Compression reduces file size mainly by optimizing embedded images. Text stays crisp; photos may lose a little fidelity. For email and web uploads the difference is rarely noticeable.</p></details>
+<details class="seo-faq"><summary>Are my PDF files kept private?</summary><p>Yes. Files are processed on the FreeForge server only to perform your requested operation and are never shared with anyone.</p></details>
+<details class="seo-faq"><summary>What are the limits?</summary><p>Files up to 25 MB, up to 500 pages each, up to 10 files per merge, and about 20 operations per day per visitor — all free, no signup.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-compress" data-tablink="t-compress">Image Compressor</a> <a href="#t-qr" data-tablink="t-qr">QR Code Generator</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I merge PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upload 2 to 10 PDF files in the order you want them combined, then download the single merged document. Page order follows your upload order."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I split pages out of a PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upload the PDF and specify which pages to extract — for example pages 1–3 and 5. You get a new PDF containing only those pages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will compressing a PDF ruin its quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Compression reduces file size mainly by optimizing embedded images. Text stays crisp; photos may lose a little fidelity. For email and web uploads the difference is rarely noticeable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my PDF files kept private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Files are processed on the FreeForge server only to perform your requested operation and are never shared with anyone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the limits?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Files up to 25 MB, up to 500 pages each, up to 10 files per merge, and about 20 operations per day per visitor — all free, no signup."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- IMAGE COMPRESSOR -->
   <section id="t-compress" class="tab" aria-label="Free Image Compressor">
@@ -629,7 +1539,74 @@
     <div class="hint" id="ic-status"></div>
     <div class="out" id="ic-out"></div>
     <div class="err" id="ic-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Image Compressor</h3>
+<p>Huge image files slow down websites, bounce off email attachment limits, and eat mobile data. The FreeForge image compressor shrinks your photos in seconds: upload a JPG, PNG or WebP up to 15 MB, choose a max width and quality level, and download a dramatically smaller file that still looks great. Bloggers use it before publishing, sellers use it for listings, and everyone uses it before sending photos over chat or email.</p>
+<p>How to use it: (1) Click <b>Choose an image</b> and upload your JPG, PNG or WebP (max 15 MB). (2) Pick a max width: 800 px for small web images, 1200 for medium, 1600 for large (the default), or 2560 to keep it big. (3) Pick a quality: 60 for the smallest file, 80 for the balanced sweet spot, 92 for best quality. (4) Choose the output format — JPG for photos, WebP for the smallest web-ready files, PNG when you need transparency or pixel-perfect graphics. (5) Press <b>Compress Image</b> and download the result, with before/after sizes shown.</p>
+<p>Tips: for websites, WebP at quality 80 and 1600 px width is the sweet spot — often 70–80% smaller than the original with no visible difference. Screenshots with text compress best as PNG. Compressing is also the final step after using our <b>Background Remover</b> or <b>Quote Card Maker</b> — cut out or design first, then shrink for upload. Building a document? Shrink images before assembling with the <b>PDF Tools</b> to keep the PDF small.</p>
+<ul class="facts">
+<li><b>✓</b> JPG, PNG and WebP uploads up to 15 MB</li>
+<li><b>✓</b> Resize presets (800–2560 px) × quality levels (60/80/92) × 3 output formats</li>
+<li><b>✓</b> Before/after sizes shown; 30 free compressions per day; files never shared</li>
+</ul>
+<h3>Image Compressor — FAQs</h3>
+<details class="seo-faq"><summary>How much smaller will my image get?</summary><p>Typically 50–80% smaller at quality 80 with no visible difference on screens. The exact saving depends on the original: phone photos with lots of detail compress dramatically.</p></details>
+<details class="seo-faq"><summary>Which quality setting should I choose?</summary><p>80 is the balanced default and right for almost everything. Use 60 when file size matters most (thumbnails, chat), 92 when quality is paramount (portfolios, print prep).</p></details>
+<details class="seo-faq"><summary>Which output format is best?</summary><p>WebP gives the smallest files for web use. JPG is the universal safe choice for compatibility. PNG preserves transparency and sharp text/graphics but makes larger files.</p></details>
+<details class="seo-faq"><summary>Are my images kept private?</summary><p>Yes — processed on the FreeForge server only to compress them, never shared with anyone.</p></details>
+<details class="seo-faq"><summary>Is the image compressor free?</summary><p>Yes, no signup, about 30 compressions per day per visitor.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-pdf" data-tablink="t-pdf">PDF Tools</a> <a href="#t-rembg" data-tablink="t-rembg">Background Remover</a> <a href="#t-quote" data-tablink="t-quote">Quote Card Maker</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much smaller will my image get?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typically 50–80% smaller at quality 80 with no visible difference on screens. The exact saving depends on the original: phone photos with lots of detail compress dramatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which quality setting should I choose?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "80 is the balanced default and right for almost everything. Use 60 when file size matters most (thumbnails, chat), 92 when quality is paramount (portfolios, print prep)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which output format is best?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WebP gives the smallest files for web use. JPG is the universal safe choice for compatibility. PNG preserves transparency and sharp text/graphics but makes larger files."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my images kept private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — processed on the FreeForge server only to compress them, never shared with anyone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the image compressor free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, no signup, about 30 compressions per day per visitor."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- UNIT CONVERTER -->
   <section id="t-unit" class="tab" aria-label="Free Unit Converter">
@@ -654,7 +1631,65 @@
     <button class="go" id="uc-go">Convert — Free</button>
     <div class="out" id="uc-out" style="text-align:left"></div>
     <div class="err" id="uc-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Unit Converter</h3>
+<p>The FreeForge unit converter translates measurements between metric and imperial systems instantly — no mental math, no separate apps. It covers six categories: <b>length</b> (meters, kilometers, miles, feet, inches, centimeters), <b>weight</b> (kilograms, grams, pounds, ounces), <b>temperature</b> (Celsius, Fahrenheit, Kelvin), <b>area</b>, <b>speed</b> (km/h, mph, m/s), and <b>data size</b> (KB, MB, GB, TB). Cooking, traveling, studying, coding, or shopping internationally — whenever units don't match, this sorts it in seconds.</p>
+<p>How to use it: (1) Pick a category — length, weight, temperature, area, speed or data. (2) Type the value. (3) Choose the unit you're converting from and the unit you're converting to. (4) Press <b>Convert</b>. The answer appears instantly, computed right in your browser — no waiting, no page reload, and it works even on flaky connections once the page has loaded.</p>
+<p>Common conversions people run here: miles to kilometers for travel, Fahrenheit to Celsius for recipes and weather, pounds to kilograms for fitness tracking (handy alongside our <b>BMI Calculator</b> — convert first, then calculate), and MB to GB when checking whether a file fits somewhere. Students use it for physics homework; cooks use it for American recipes. Everything is free, unlimited and private.</p>
+<ul class="facts">
+<li><b>✓</b> 6 categories: length, weight, temperature, area, speed, data size</li>
+<li><b>✓</b> Full metric ↔ imperial coverage (miles/km, °F/°C, lb/kg, mph/km/h…)</li>
+<li><b>✓</b> Instant in-browser conversion — free, unlimited, nothing sent anywhere</li>
+</ul>
+<h3>Unit Converter — FAQs</h3>
+<details class="seo-faq"><summary>Which units can I convert?</summary><p>Length (m, km, cm, mm, miles, yards, feet, inches), weight (kg, g, lb, oz), temperature (°C, °F, K), area, speed (km/h, mph, m/s) and data sizes (KB through TB).</p></details>
+<details class="seo-faq"><summary>How accurate are the conversions?</summary><p>Exact — conversions use standard defined factors (e.g. 1 inch = 2.54 cm exactly), computed with full floating-point precision in your browser.</p></details>
+<details class="seo-faq"><summary>Does the converter work offline?</summary><p>Once the page has loaded, yes: all conversion math runs locally in your browser with no server calls.</p></details>
+<details class="seo-faq"><summary>Is it free?</summary><p>Completely free and unlimited, no signup.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-bmi" data-tablink="t-bmi">BMI Calculator</a> <a href="#t-words" data-tablink="t-words">Word Counter</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which units can I convert?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Length (m, km, cm, mm, miles, yards, feet, inches), weight (kg, g, lb, oz), temperature (°C, °F, K), area, speed (km/h, mph, m/s) and data sizes (KB through TB)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are the conversions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exact — conversions use standard defined factors (e.g. 1 inch = 2.54 cm exactly), computed with full floating-point precision in your browser."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the converter work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once the page has loaded, yes: all conversion math runs locally in your browser with no server calls."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Completely free and unlimited, no signup."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- WORD COUNTER -->
   <section id="t-words" class="tab" aria-label="Free Word Counter">
@@ -665,7 +1700,74 @@
     <textarea id="wc-text" maxlength="100000" placeholder="Paste or type your text here — counts update as you type..."></textarea>
     <div class="hint"><span id="wc-ccount">0</span>/100000 characters</div>
     <div class="out" id="wc-out" style="text-align:left"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Word Counter</h3>
+<p>Paste any text and the FreeForge word counter analyzes it live as you type: word count, character count (with and without spaces), sentence count, paragraph count, and estimated reading time. Students check essays against assignment limits, writers track article length, job seekers trim resumes, and social media managers fit captions to platform limits — all without installing anything.</p>
+<p>How to use it: (1) Paste or type your text into the box — up to 100,000 characters, roughly a 20,000-word document. (2) Watch the counts update instantly as you type. (3) Use the reading-time estimate to sanity-check blog posts and speeches (most platforms assume ~200 words per minute). There's nothing to submit and no button to press — it's live from the first keystroke.</p>
+<p>Practical uses: keep college essays inside the word limit before submitting; check that meta descriptions stay under ~160 characters for SEO; verify tweet/X and bio lengths; estimate how long a script will take to read aloud before recording it with our <b>AI Voice Generator</b>. Drafted something with <b>AI Chat</b>? Paste it here to check the length. Because counting happens entirely in your browser, your text never leaves your device — safe for drafts, manuscripts and private documents.</p>
+<ul class="facts">
+<li><b>✓</b> Live counts: words, characters, sentences, paragraphs + reading time</li>
+<li><b>✓</b> Handles up to 100,000 characters — full essays and articles</li>
+<li><b>✓</b> 100% private: counting runs in your browser; text never uploaded</li>
+</ul>
+<h3>Word Counter — FAQs</h3>
+<details class="seo-faq"><summary>What exactly does the word counter count?</summary><p>Words, characters (with and without spaces), sentences, paragraphs, and an estimated reading time — all updating live as you type or paste.</p></details>
+<details class="seo-faq"><summary>How is reading time estimated?</summary><p>By dividing the word count by an average adult reading speed (~200 words per minute) — the same convention most blogging platforms use.</p></details>
+<details class="seo-faq"><summary>Is there a text size limit?</summary><p>The box accepts up to 100,000 characters, which covers essays, articles, chapters and long reports comfortably.</p></details>
+<details class="seo-faq"><summary>Is my text private?</summary><p>Yes. All counting happens locally in your browser — your text is never sent to any server.</p></details>
+<details class="seo-faq"><summary>Is the word counter free?</summary><p>Yes — free, unlimited, no signup.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-aichat" data-tablink="t-aichat">AI Chat</a> <a href="#t-caption" data-tablink="t-caption">Caption Generator</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What exactly does the word counter count?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Words, characters (with and without spaces), sentences, paragraphs, and an estimated reading time — all updating live as you type or paste."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is reading time estimated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By dividing the word count by an average adult reading speed (~200 words per minute) — the same convention most blogging platforms use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a text size limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The box accepts up to 100,000 characters, which covers essays, articles, chapters and long reports comfortably."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my text private?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All counting happens locally in your browser — your text is never sent to any server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the word counter free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — free, unlimited, no signup."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- CREATOR QUIZ -->
   <section id="t-quiz" class="tab" aria-label="Creator Personality Quiz">
@@ -674,7 +1776,74 @@
        then download your result card and share it with friends.</p>
     <div id="quiz-box"></div>
     <div class="out" id="quiz-out" style="text-align:left"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Creator Personality Quiz</h3>
+<p>Answer 8 quick, fun questions and discover your creator superpower — are you the Storyteller, the Educator, the Entertainer, or something else entirely? The FreeForge creator quiz is a 2-minute personality quiz built for content creators: it matches your instincts and preferences to a creator archetype, then generates a shareable result card you can post or send to friends.</p>
+<p>How to play: (1) Open the quiz tab. (2) Answer all 8 questions honestly — go with your gut, not the "impressive" answer. (3) Get your creator type instantly, with a short description of your strengths. (4) Download your result card and share it on your story, in group chats, or as a post. It takes about two minutes start to finish.</p>
+<p>It's designed as pure fun — a conversation starter for creator communities, classrooms and friend groups — not a scientific assessment. Share your result and compare with friends; different creator types actually complement each other when collaborating. When you know your type, put it to work: Storytellers should try the <b>Story Video Maker</b>, Educators will love <b>AI Chat</b> for scripting help, and Entertainers can grab hooks from the <b>Caption Generator</b>.</p>
+<ul class="facts">
+<li><b>✓</b> 8 fun questions — about 2 minutes start to finish</li>
+<li><b>✓</b> Instant creator-type result with a downloadable shareable card</li>
+<li><b>✓</b> Runs in your browser; free, no signup, no email required</li>
+</ul>
+<h3>Creator Personality Quiz — FAQs</h3>
+<details class="seo-faq"><summary>What is the creator quiz?</summary><p>A free 2-minute personality quiz: 8 questions about your instincts and preferences, matched to a creator archetype (like Storyteller or Educator), with a shareable result card at the end.</p></details>
+<details class="seo-faq"><summary>How long does it take?</summary><p>About two minutes — 8 quick multiple-choice questions with instant results.</p></details>
+<details class="seo-faq"><summary>What do I get at the end?</summary><p>Your creator type, a short description of its strengths, and a downloadable result card you can share on social media or with friends.</p></details>
+<details class="seo-faq"><summary>Is it scientifically accurate?</summary><p>No — it's designed for fun and self-reflection, not as a psychological assessment. Take the result as inspiration, not a label.</p></details>
+<details class="seo-faq"><summary>Do I need an account to play?</summary><p>No. It's free with no signup and no email required.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-caption" data-tablink="t-caption">Caption Generator</a> <a href="#t-aichat" data-tablink="t-aichat">AI Chat</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the creator quiz?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A free 2-minute personality quiz: 8 questions about your instincts and preferences, matched to a creator archetype (like Storyteller or Educator), with a shareable result card at the end."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About two minutes — 8 quick multiple-choice questions with instant results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I get at the end?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your creator type, a short description of its strengths, and a downloadable result card you can share on social media or with friends."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it scientifically accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — it's designed for fun and self-reflection, not as a psychological assessment. Take the result as inspiration, not a label."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an account to play?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It's free with no signup and no email required."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- PASSWORD GENERATOR -->
   <section id="t-password" class="tab" aria-label="Free Password Generator">
@@ -692,7 +1861,74 @@
     <button class="go ghost" id="pw-copy" style="display:none">📋 Copy Password</button>
     <div class="err" id="pw-err"></div>
     <div class="hint">Generated locally in your browser — never sent to any server. Don't reuse passwords across sites.</div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Password Generator</h3>
+<p>Weak and reused passwords cause the vast majority of account takeovers. The FreeForge password generator creates strong, random, unpredictable passwords in one tap — the kind no human would invent and no attacker can guess. You control the length (8–64 characters) and character sets (letters plus optional numbers and symbols), then copy the result straight into your signup form or password manager.</p>
+<p>How to use it: (1) Drag the slider to set the length — 16 characters is the sweet spot for most accounts; 20+ for banking and email. (2) Keep numbers and symbols checked for maximum strength (uncheck only if a site rejects them). (3) Press <b>Generate Password</b>. (4) Press <b>Copy Password</b> and paste it where needed. Generate a fresh one for every site — never reuse passwords across accounts.</p>
+<p>The security detail that matters: passwords are generated <b>locally in your browser</b> using your device's cryptographic random number generator. They are never sent to any server, never logged, and FreeForge never sees them — we couldn't recover or reveal your password even if asked. Pair this habit with a password manager (so you don't have to memorize 16-character strings) and two-factor authentication on important accounts. For a deeper dive, read our <a href="/blog/password-security-guide">password security guide</a> on the blog.</p>
+<ul class="facts">
+<li><b>✓</b> Length slider 8–64 characters; toggle numbers and symbols</li>
+<li><b>✓</b> Generated locally with cryptographic randomness — never sent to any server</li>
+<li><b>✓</b> One-tap copy button; 30 free generations per day (anti-abuse only)</li>
+</ul>
+<h3>Password Generator — FAQs</h3>
+<details class="seo-faq"><summary>Are the generated passwords secure?</summary><p>Yes — they're built from your device's cryptographic random number generator, making them unpredictable. A 16-character password with numbers and symbols has more combinations than any attacker can brute-force.</p></details>
+<details class="seo-faq"><summary>Where are my passwords generated?</summary><p>Entirely in your browser, on your device. Nothing is transmitted to FreeForge servers, stored, or logged — the password exists only on your screen until you copy it.</p></details>
+<details class="seo-faq"><summary>Can FreeForge see or recover my password?</summary><p>No. Since generation and display happen locally, we never receive your password and cannot see, store, or recover it.</p></details>
+<details class="seo-faq"><summary>What length should I use?</summary><p>16 characters for most accounts; 20+ for email, banking and anything holding money or identity documents. Longer is always stronger.</p></details>
+<details class="seo-faq"><summary>Why is there a daily limit if it's all local?</summary><p>The limit (about 30/day) is anti-abuse protection for the site, not a restriction on the cryptography — normal human use never hits it.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-myip" data-tablink="t-myip">What Is My IP</a> <a href="#t-qr" data-tablink="t-qr">QR Code Generator</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are the generated passwords secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — they're built from your device's cryptographic random number generator, making them unpredictable. A 16-character password with numbers and symbols has more combinations than any attacker can brute-force."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are my passwords generated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entirely in your browser, on your device. Nothing is transmitted to FreeForge servers, stored, or logged — the password exists only on your screen until you copy it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can FreeForge see or recover my password?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Since generation and display happen locally, we never receive your password and cannot see, store, or recover it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What length should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "16 characters for most accounts; 20+ for email, banking and anything holding money or identity documents. Longer is always stronger."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is there a daily limit if it's all local?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The limit (about 30/day) is anti-abuse protection for the site, not a restriction on the cryptography — normal human use never hits it."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- ANAGRAM SOLVER -->
   <section id="t-anagram" class="tab" aria-label="Free Anagram Solver">
@@ -704,7 +1940,65 @@
     <button class="go" id="ag-go">Solve Anagrams — Free</button>
     <div class="out" id="ag-out" style="text-align:left"></div>
     <div class="err" id="ag-err"></div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free Anagram Solver</h3>
+<p>Stuck on a jumble? The FreeForge anagram solver unscrambles your letters and lists every real English word you can make from them — from full-length anagrams down to short words. It's a secret weapon for Scrabble (find the highest-scoring play), crosswords, Words With Friends, and word-puzzle apps. Type up to 12 letters; results appear instantly.</p>
+<p>How to use it: (1) Type your letters into the box — up to 12, in any order, e.g. "listen". (2) Press <b>Solve Anagrams</b>. (3) Browse every valid word the letters can form, typically grouped with longer words first so the best plays jump out. All solving happens in your browser against a bundled word list, so it's instant and works without waiting on a server.</p>
+<p>Scrabble tips: the longest word isn't always the best play — check which options let you hit bonus squares or use all seven tiles for the 50-point bingo. For crossword anagrams, look for common prefixes and suffixes (RE-, UN-, -ING, -ED) in the results. Word-game fans also like our <b>Word Counter</b> for writing challenges and the <b>Creator Quiz</b> for a break between games.</p>
+<ul class="facts">
+<li><b>✓</b> Unscramble up to 12 letters into every valid English word</li>
+<li><b>✓</b> Full dictionary scan in your browser — instant results, no waiting</li>
+<li><b>✓</b> Perfect for Scrabble, Words With Friends, crosswords & puzzle apps</li>
+</ul>
+<h3>Anagram Solver — FAQs</h3>
+<details class="seo-faq"><summary>How does the anagram solver work?</summary><p>Type up to 12 letters and it scans a bundled English word list in your browser, returning every real word those letters can form — full-length anagrams first, then shorter words.</p></details>
+<details class="seo-faq"><summary>Is it good for Scrabble?</summary><p>Yes — it's ideal for finding the highest-scoring play from your rack, including bingos (using all 7 tiles). Remember that the longest word isn't always the best scoring play; position matters too.</p></details>
+<details class="seo-faq"><summary>Which dictionary does it use?</summary><p>A built-in English word list covering common vocabulary. Obscure Scrabble-only words may occasionally be missing — tournament players should double-check against their official word list.</p></details>
+<details class="seo-faq"><summary>Is it free?</summary><p>Yes — free with no signup, about 30 solves per day per visitor.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-words" data-tablink="t-words">Word Counter</a> <a href="#t-quiz" data-tablink="t-quiz">Creator Quiz</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the anagram solver work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Type up to 12 letters and it scans a bundled English word list in your browser, returning every real word those letters can form — full-length anagrams first, then shorter words."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it good for Scrabble?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — it's ideal for finding the highest-scoring play from your rack, including bingos (using all 7 tiles). Remember that the longest word isn't always the best scoring play; position matters too."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which dictionary does it use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A built-in English word list covering common vocabulary. Obscure Scrabble-only words may occasionally be missing — tournament players should double-check against their official word list."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — free with no signup, about 30 solves per day per visitor."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- QR CODE GENERATOR -->
   <section id="t-qr" class="tab" aria-label="Free QR Code Generator">
@@ -718,7 +2012,74 @@
     <button class="go ghost" id="qr-dl" style="display:none">⬇️ Download PNG</button>
     <div class="err" id="qr-err"></div>
     <div class="hint">QR codes are generated locally in your browser — your link never leaves your device.</div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free QR Code Generator</h3>
+<p>Turn any link or snippet of text into a crisp, scannable QR code — free, with no watermark and no signup. Point it at your website, YouTube channel, menu PDF, Wi-Fi details, payment link or contact card; anyone with a phone camera can scan it. The code is generated <b>locally in your browser</b> by a vendored QR library, so your link never leaves your device and nothing is tracked.</p>
+<p>How to use it: (1) Paste your link or type your text — up to 400 characters. Shorter URLs scan more reliably, so trim tracking parameters first. (2) Press <b>Generate QR Code</b>. (3) Press <b>Download PNG</b> and use the image anywhere: print it on packaging, add it to a flyer, embed it in a presentation, or set it as a social profile image.</p>
+<p>Tips for codes that scan every time: test with your own phone before printing, keep quiet space (white margin) around the code, and print at least 2 × 2 cm for close scanning (bigger for posters viewed at distance). Dark code on a light background works best — avoid inverting the colors. QR codes generated here are static, so they never expire. Pair with our <b>PDF Tools</b> (link a QR to a merged PDF menu or catalog) or encode a strong password-adjacent secret? Don't — instead generate the secret with our <b>Password Generator</b> and share access another way.</p>
+<ul class="facts">
+<li><b>✓</b> Encode any link or text up to 400 characters</li>
+<li><b>✓</b> Crisp PNG download, generated locally — your data never leaves your device</li>
+<li><b>✓</b> Static codes that never expire; no tracking, no watermark; 30 free per day</li>
+</ul>
+<h3>QR Code Generator — FAQs</h3>
+<details class="seo-faq"><summary>What can I put in a QR code?</summary><p>Any link (websites, videos, documents, payment pages) or plain text up to 400 characters — contact details, Wi-Fi credentials, short messages and more.</p></details>
+<details class="seo-faq"><summary>Do the QR codes expire?</summary><p>No. These are static QR codes: the data is encoded directly in the pattern, so they work forever with no subscription or renewal.</p></details>
+<details class="seo-faq"><summary>Is my link tracked or stored?</summary><p>No. Generation happens entirely in your browser — your link is never sent to a server, logged or tracked.</p></details>
+<details class="seo-faq"><summary>Why won't my QR code scan?</summary><p>The usual culprits: too-small print size, no white margin around the code, inverted colors, or a damaged/blurry print. Regenerate, keep it dark-on-light with quiet space, and test before distributing.</p></details>
+<details class="seo-faq"><summary>Is the QR generator free?</summary><p>Yes — free, no signup, no watermark on the downloaded PNG.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-password" data-tablink="t-password">Password Generator</a> <a href="#t-pdf" data-tablink="t-pdf">PDF Tools</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What can I put in a QR code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any link (websites, videos, documents, payment pages) or plain text up to 400 characters — contact details, Wi-Fi credentials, short messages and more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do the QR codes expire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. These are static QR codes: the data is encoded directly in the pattern, so they work forever with no subscription or renewal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my link tracked or stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Generation happens entirely in your browser — your link is never sent to a server, logged or tracked."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why won't my QR code scan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The usual culprits: too-small print size, no white margin around the code, inverted colors, or a damaged/blurry print. Regenerate, keep it dark-on-light with quiet space, and test before distributing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the QR generator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — free, no signup, no watermark on the downloaded PNG."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 
   <!-- WHAT IS MY IP -->
   <section id="t-myip" class="tab" aria-label="What Is My IP">
@@ -727,10 +2088,78 @@
        handy for router setups, whitelists &amp; forms.</p>
     <button class="go" id="ip-go">Show My IP — Free</button>
     <div class="out" id="ip-out" style="text-align:center;font-size:1.6rem;font-weight:800;word-break:break-all"></div>
+    <div id="ip-tz" style="text-align:center;margin-top:10px;color:var(--mut)"></div>
     <button class="go ghost" id="ip-copy" style="display:none">📋 Copy IP</button>
     <div class="err" id="ip-err"></div>
     <div class="hint">Your IP is only read to display it — nothing is stored or logged.</div>
-  </section>
+  
+<div class="seo-copy">
+<h3>How to use the free What Is My IP checker</h3>
+<p>Your public IP address is how the internet sees you — websites, game servers and your router all use it. The FreeForge "What's my IP" tool shows it in one tap: press the button and your public IP appears instantly, with a copy button for pasting into forms, whitelists and support tickets. Nothing is stored or logged.</p>
+<p>How to use it: (1) Press <b>Show My IP</b>. (2) Your public IP address appears in large type. (3) Press <b>Copy IP</b> to copy it. That's the whole tool — deliberately simple. Common uses: whitelisting your IP in a server firewall or database, giving it to tech support, configuring port forwarding on your router, checking whether your VPN is actually active (the IP should change), or filling in forms that ask for it.</p>
+<p>Two things worth knowing: most home connections have <b>dynamic</b> IPs, so the address can change when your router reconnects — if a whitelist stops working, check here again. And your IP reveals your rough city/ISP, which is exactly why the tool shows it only to you and stores nothing. Privacy-conscious users pair this check with our <b>Password Generator</b> (unique passwords everywhere) when hardening their accounts.</p>
+<ul class="facts">
+<li><b>✓</b> One-tap display of your public IP address, with copy button</li>
+<li><b>✓</b> Nothing stored or logged — the address is shown only to you</li>
+<li><b>✓</b> Free, no signup; about 60 checks per day per visitor</li>
+</ul>
+<h3>What Is My IP checker — FAQs</h3>
+<details class="seo-faq"><summary>What is an IP address?</summary><p>It's the numeric address your internet connection uses online — like a return address for your data. Websites and services see your public IP whenever you visit them.</p></details>
+<details class="seo-faq"><summary>Why did my IP address change?</summary><p>Most home ISPs assign dynamic IPs that rotate when your router reconnects or after some time. That's normal. If you need a fixed address, ask your ISP about a static IP.</p></details>
+<details class="seo-faq"><summary>Does this tool store my IP?</summary><p>No. Your IP is read only to display it back to you — nothing is stored, logged or shared.</p></details>
+<details class="seo-faq"><summary>How do I check if my VPN is working?</summary><p>Note your IP here, connect the VPN, and check again — the address (and usually the location/ISP) should change. If it's identical, the VPN isn't routing your traffic.</p></details>
+<details class="seo-faq"><summary>Is it free?</summary><p>Yes — free, no signup, unlimited for normal use.</p></details>
+<p class="see-also"><b>Related free tools:</b> <a href="#t-password" data-tablink="t-password">Password Generator</a> <a href="#t-qr" data-tablink="t-qr">QR Code Generator</a></p>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an IP address?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's the numeric address your internet connection uses online — like a return address for your data. Websites and services see your public IP whenever you visit them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did my IP address change?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most home ISPs assign dynamic IPs that rotate when your router reconnects or after some time. That's normal. If you need a fixed address, ask your ISP about a static IP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool store my IP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Your IP is read only to display it back to you — nothing is stored, logged or shared."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I check if my VPN is working?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Note your IP here, connect the VPN, and check again — the address (and usually the location/ISP) should change. If it's identical, the VPN isn't routing your traffic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — free, no signup, unlimited for normal use."
+      }
+    }
+  ]
+}
+</script>
+</div>
+</section>
 </main>
 </section>
 
@@ -786,10 +2215,10 @@
 
 <footer>
   <nav aria-label="Footer">
-    <a href="/blog">Blog</a><a href="/about">About</a>
-    <a href="/privacy">Privacy</a><a href="/contact">Contact</a><a href="/terms">Terms</a>
+    <a href="/blog" data-i18n="foot_blog">Blog</a><a href="/about" data-i18n="foot_about">About</a>
+    <a href="/privacy" data-i18n="foot_privacy">Privacy</a><a href="/contact" data-i18n="foot_contact">Contact</a><a href="/terms" data-i18n="foot_terms">Terms</a>
   </nav>
-  <b>FreeForge</b> — Free AI Studio &amp; Free Online Tools. 21 free tools: AI chat, images, voices, story videos, text-to-video, photo animator, captions, quote cards, PDF tools, image compressor, calculators, unit converter, word counter, quiz, password generator, anagram solver, QR code generator &amp; what's my IP. 100% free, no signup.<br>
+  <b>FreeForge</b> — <span data-i18n="foot_tag">Free AI Studio &amp; Free Online Tools. 21 free tools: AI chat, images, voices, story videos, text-to-video, photo animator, captions, quote cards, PDF tools, image compressor, calculators, unit converter, word counter, quiz, password generator, anagram solver, QR code generator &amp; what's my IP. 100% free, no signup.</span><br>
   Images via Pollinations · Voices via Microsoft Edge TTS
 </footer>
 
@@ -876,6 +2305,11 @@ document.querySelectorAll('.tcard').forEach(c => {
   c.onclick = () => gotoTab(c.dataset.goto);
   c.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') gotoTab(c.dataset.goto); };
 });
+// SEO cross-links: <a data-tablink="t-bmi"> switches tabs instead of jumping
+document.querySelectorAll('a[data-tablink]').forEach(a => {
+  a.addEventListener('click', e => { e.preventDefault(); gotoTab(a.getAttribute('data-tablink')); });
+});
+
 // deep-link: open the tab from the URL hash (e.g. /#t-bmi) for shareable/SEO URLs
 (function(){
   const h = (location.hash || '').replace('#','');
@@ -1734,6 +3168,7 @@ document.getElementById('ip-go').onclick = async () => {
   }
 };
 </script>
+<script src="/i18n.js"></script>
 <script src="/cookie-consent.js"></script>
 </body>
 </html>
